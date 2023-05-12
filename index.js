@@ -70,11 +70,12 @@ app.get('/verify-email/:studentId', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
-app.post('/verify-email/:studentId', (req, res) => {
+app.get('/verify-email/:studentId', (req, res) => {
   const { otp } = req.body;
   const { studentId } = req.params;
+  
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
-  Student.findById(studentId, (err, student) => {
+  Student.findOne({ email: studentId }, (err, student) => {
     if (err || !student) {
       // Handle error or student not found scenario
       res.send('Student not found.'); // Display an error message or redirect as needed
