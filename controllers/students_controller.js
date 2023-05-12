@@ -67,7 +67,8 @@ module.exports.create = async (req, res) => {
     const joiningLink = `https://placement-cell-fj5h.onrender.com/verify-email/${newStudent.id}`;
 
 
-    const otp = otp({ digits: 6 }).totp();
+    const otp = authenticator.generateSecret();
+
 
 
     const emailSubject = 'Placement Cell Joining Link';

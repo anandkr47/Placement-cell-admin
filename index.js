@@ -10,7 +10,8 @@ const { PORT, MONGODB_URI } = process.env;
 const expressLayouts = require("express-ejs-layouts");
 const fetch = require('cross-fetch');
 const Student = require("./models/student");
-const otp = require('node-otp');
+const { authenticator } = require('otplib');
+
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -83,7 +84,7 @@ app.post('/verify-email', (req, res) => {
       const studentOTP = student.otp;
 
       // Verify the entered OTP against the retrieved OTP
-      if (otp.verifyOTP(studentOTP, otp)) {
+      if (authenticator.checkstudentOTP, otp) {
         // Perform any necessary tasks after successful email verification
 
         res.redirect('/student-dashboard',{title:'student dashbord'}); // Redirect to the student dashboard page
