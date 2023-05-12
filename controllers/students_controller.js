@@ -1,7 +1,8 @@
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 const { sendEmail } = require('./email');
-const otp = require('node-otp');
+const { authenticator } = require('otplib');
+
 
 
 
