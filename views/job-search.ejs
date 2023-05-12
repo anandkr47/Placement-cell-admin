@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="text-center mb-4">Job Search</h1>
+    
+    <form action="/search" method="GET">
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="jobName">Job Name:</label>
+        <input type="text" class="form-control" id="jobName" name="jobName" placeholder="Enter job name" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    
+    <% if (jobs && jobs.length > 0) { %>
+      <h2 class="mt-4">Search Results:</h2>
+      <ul class="list-group">
+        <% jobs.forEach(function(job) { %>
+          <li class="list-group-item">
+            <strong><%= job.title %></strong> - <%= job.location %>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else if (jobs && jobs.length === 0) { %>
+      
+    <% } %>
+  </div>
+</div>

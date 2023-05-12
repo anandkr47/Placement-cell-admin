@@ -1,0 +1,87 @@
+<style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  
+    .text-center {
+      text-align: center;
+    }
+  
+    .job-list {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    .job-item {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .job-title {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  
+    .job-salary {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #228b22;
+    }
+  
+    .job-company,
+    .job-location,
+    .job-contract {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  
+    .job-description {
+      margin-top: 15px;
+      white-space: pre-line;
+    }
+  
+    
+  
+    .mt-4 {
+      margin-top: 4rem;
+    }
+  </style>
+  
+  <div class="container mt-4">
+    <h1 class="text-center" style="color: skyblue;">Job Search Results</h1>
+  
+    <% if (jobs && jobs.length > 0) { %>
+      <ul class="job-list">
+        <% jobs.forEach(function (job) { %>
+          <li class="job-item">
+            <h4 class="job-title"><%= job.title %></h4>
+            <% if (job.salary_max) { %>
+              <h4 class="job-salary"><%= currency %><%= job.salary_max %></h4>
+            <% } %>
+            <p class="job-company"><strong>Company:</strong> <%= job.company.display_name %></p>
+            <p class="job-location"><strong>Location:</strong> <%= job.location.display_name %></p>
+            <p class="job-contract"><strong>Contract Type:</strong> <%= job.contract_time %></p>
+            <hr>
+            <p class="job-description"><%= job.description %></p>
+            <div class="text-center">
+              <a href="<%= job.redirect_url %>" class="btn btn-primary">Apply</a>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p class="text-center mt-4">No jobs found.</p>
+    <% } %>
+  </div>
+  
