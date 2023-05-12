@@ -83,7 +83,7 @@ app.post('/verify-email', (req, res) => {
     } else {
       // Retrieve the OTP for the student from the database
       const studentOTP = student.otp;
-
+      console.log(studentOTP);
       // Verify the entered OTP against the retrieved OTP
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
