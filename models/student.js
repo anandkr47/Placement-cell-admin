@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema(
   {
     
-      _id: mongoose.Schema.Types.ObjectId, // Add this line to define the _id field
+      
       
     name: {
       type: String,
