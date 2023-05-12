@@ -79,7 +79,7 @@ app.post('/verify-email', (req, res) => {
   Student.findOne({ email: email }, (err, student) => {
     if (err || !student) {
       // Handle error or student not found scenario
-      res.send('Student not found.'); // Display an error message or redirect as needed
+      res.send('Student Not found.'); // Display an error message or redirect as needed
     } else {
       // Retrieve the OTP for the student from the database
       const studentOTP = student.otp;
