@@ -15,6 +15,7 @@ It is built using NodeJs, ExpressJs, MongoDB, EJS and JavaScript.
 - Deallocate the student from an interview
 - Update user profile
 - Download the CSV report
+- job portal You can search jobs according to the location and job title
  
 ## 🧑‍💻 Getting started
 
@@ -56,12 +57,6 @@ The project is running on the port number provided by you.
 * passport-jwt
 * passport-local
 
-## 🖼️ Screenshots
-![](./public/2.png)
-![](./public/3.png)
-![](./public/4.png)
-![](./public/5.png)
-![](./public/6.png)
-![](./public/7.png)
-![](./public/8.png)
+
+
 
