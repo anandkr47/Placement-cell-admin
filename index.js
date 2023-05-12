@@ -66,20 +66,20 @@ app.use(customMware.setFlash);
 app.use("/", require("./routes"));
 
 app.get('/verify-email/:studentId', (req, res) => {
-  const { email } = req.params;
-  res.render('verify-email', { title: 'Verify Email', email });
+  const { studentId } = req.params;
+  res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
 app.post('/verify-email', (req, res) => {
   const { otp } = req.body;
-  const { email } = req.params;
+  const { studentId } = req.params;
   console.log(otp);
-  console.log(email);
+  console.log(studentId);
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
-  Student.findOne({ email: email }, (err, student) => {
+  Student.findOne({ _id: studentId }, (err, student) => {
     if (err || !student) {
       // Handle error or student not found scenario
-      res.send('Student Not found.'); // Display an error message or redirect as needed
+      res.send('Student not found.'); // Display an error message or redirect as needed
     } else {
       // Retrieve the OTP for the student from the database
       const studentOTP = student.otp;
