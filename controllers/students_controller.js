@@ -1,6 +1,6 @@
 const Student = require("../models/student");
 const Interview = require("../models/interview");
-
+const { sendEmail } = require('./email');
 // render add student page
 module.exports.addStudent = (req, res) => {
   if (req.isAuthenticated()) {
@@ -40,44 +40,45 @@ module.exports.create = async (req, res) => {
       webdev_score,
     } = req.body;
 
-    // check if student already exist
-    Student.findOne({ email }, async (err, student) => {
-      if (err) {
-        console.log("error in finding student");
-        return;
-      }
+    // check if student already exists
+    const existingStudent = await Student.findOne({ email });
 
-      if (!student) {
-        await Student.create(
-          {
-            name,
-            email,
-            college,
-            batch,
-            dsa_score,
-            react_score,
-            webdev_score,
-            placement_status,
-          },
-          (err, student) => {
-            if (err) {
-              req.flash("error", "Couldn't add student!");
-              return res.redirect("back");
-            }
-            req.flash("success", "Student added!");
-            return res.redirect("back");
-          }
-        );
-      } else {
-        req.flash("error", "Student already exist!");
-        return res.redirect("back");
-      }
+    if (existingStudent) {
+      req.flash('error', 'Student already exists!');
+      return res.redirect('back');
+    }
+
+    const newStudent = await Student.create({
+      name,
+      email,
+      college,
+      batch,
+      dsa_score,
+      react_score,
+      webdev_score,
+      placement_status,
     });
+
+    const joiningLink = `https://example.com/join/${newStudent.id}`;
+
+    const emailSubject = 'Placement Cell Joining Link';
+    const emailContent = `
+      <h3>Placement Cell Joining Link</h3>
+      <p>Dear ${newStudent.name},</p>
+      <p>You have been successfully added to the placement cell.</p>
+      <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
+    `;
+
+    sendEmail(newStudent.email, emailSubject, emailContent);
+
+    req.flash('success', 'Student added!');
+    return res.redirect('back');
   } catch (err) {
     console.log(err);
+    req.flash('error', 'An error occurred.');
+    return res.redirect('back');
   }
 };
-
 // Deletion of student
 module.exports.destroy = async (req, res) => {
   try {
