@@ -67,15 +67,15 @@ app.use("/", require("./routes"));
 
 app.get('/verify-email/:studentId', (req, res) => {
   const { studentId } = req.params;
-  res.render('verify-email',{title:'Verify Email'});
+  res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
-app.post('/verify-email', (req, res) => {
+
+app.post('/verify-email/:studentId', (req, res) => {
   const { otp } = req.body;
+  const { studentId } = req.params;
 
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
-  const { studentId } = req.params;
-  // Find the student in your database using their ID or any other identifier
   Student.findById(studentId, (err, student) => {
     if (err || !student) {
       // Handle error or student not found scenario
@@ -85,10 +85,10 @@ app.post('/verify-email', (req, res) => {
       const studentOTP = student.otp;
 
       // Verify the entered OTP against the retrieved OTP
-      if (authenticator.checkstudentOTP, otp) {
+      if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
 
-        res.redirect('/student-dashboard',{title:'student dashbord'}); // Redirect to the student dashboard page
+        res.redirect('/student-dashboard',{title:'student dashboard'}); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
