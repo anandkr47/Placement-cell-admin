@@ -66,7 +66,7 @@ app.use(customMware.setFlash);
 app.use("/", require("./routes"));
 
 app.get('/verify-email', (req, res) => {
-  res.render('verify_email',{title:'Verify Email'});
+  res.render('verify-email',{title:'Verify Email'});
 });
 
 app.post('/verify-email', (req, res) => {
