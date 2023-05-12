@@ -70,9 +70,9 @@ app.get('/verify-email/:studentId', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
-app.post('/verify-email', (req, res) => {
-  const { otp, studentId } = req.body;
-
+app.post('/verify-email/:studentId', (req, res) => {
+  const { otp } = req.body;
+  const { studentId } = req.params;
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
   Student.findById(studentId, (err, student) => {
     if (err || !student) {
