@@ -70,10 +70,8 @@ app.get('/verify-email/:studentId', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
-
-app.post('/verify-email/:studentId', (req, res) => {
-  const { otp } = req.body;
-  const { studentId } = req.params;
+app.post('/verify-email', (req, res) => {
+  const { otp, studentId } = req.body;
 
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
   Student.findById(studentId, (err, student) => {
@@ -88,14 +86,13 @@ app.post('/verify-email/:studentId', (req, res) => {
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
 
-        res.redirect('/student-dashboard',{title:'student dashboard'}); // Redirect to the student dashboard page
+        res.redirect('/student-dashboard', { title: 'student dashboard' }); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
     }
   });
 });
-
 
 app.get('/job-portal', (req, res) => {
   // Render the EJS template for the job search page
