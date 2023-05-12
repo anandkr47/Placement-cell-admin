@@ -73,7 +73,8 @@ app.get('/verify-email/:studentId', (req, res) => {
 app.post('/verify-email/:studentId', (req, res) => {
   const { otp } = req.body;
   const { email } = req.params;
-  
+  console.log(otp);
+  console.log(email);
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
   Student.findOne({ email: email }, (err, student) => {
     if (err || !student) {
