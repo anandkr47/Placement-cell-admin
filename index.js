@@ -65,7 +65,8 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
-app.get('/verify-email', (req, res) => {
+app.get('/verify-email/:studentId', (req, res) => {
+  const { studentId } = req.params;
   res.render('verify-email',{title:'Verify Email'});
 });
 
@@ -73,7 +74,7 @@ app.post('/verify-email', (req, res) => {
   const { otp } = req.body;
 
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
-
+  const { studentId } = req.params;
   // Find the student in your database using their ID or any other identifier
   Student.findById(studentId, (err, student) => {
     if (err || !student) {
