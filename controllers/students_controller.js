@@ -1,6 +1,10 @@
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 const { sendEmail } = require('./email');
+const otp = require('node-otp');
+
+
+
 // render add student page
 module.exports.addStudent = (req, res) => {
   if (req.isAuthenticated()) {
@@ -26,6 +30,7 @@ module.exports.editStudent = async (req, res) => {
   return res.redirect("/");
 };
 
+//const otpGenerator = new OTP();
 // creation of new student
 module.exports.create = async (req, res) => {
   try {
@@ -59,12 +64,18 @@ module.exports.create = async (req, res) => {
       placement_status,
     });
 
-    const joiningLink = `https://example.com/join/${newStudent.id}`;
+    const joiningLink = `https://placement-cell-fj5h.onrender.com/verify-email/${newStudent.id}`;
+
+
+    const otp = otp({ digits: 6 }).totp();
+
 
     const emailSubject = 'Placement Cell Joining Link';
     const emailContent = `
       <h3>Placement Cell Joining Link</h3>
       <p>Dear ${newStudent.name},</p>
+      <p>Please use the following OTP to verify your email:</p>
+      <p><strong>${otp}</strong></p>
       <p>You have been successfully added to the placement cell.</p>
       <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
     `;

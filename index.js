@@ -9,7 +9,8 @@ require("dotenv").config();
 const { PORT, MONGODB_URI } = process.env;
 const expressLayouts = require("express-ejs-layouts");
 const fetch = require('cross-fetch');
-
+const Student = require("./models/student");
+const otp = require('node-otp');
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -62,6 +63,38 @@ app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));
+
+app.get('/verify-email', (req, res) => {
+  res.render('verify_email',{title:'Verify Email'});
+});
+
+app.post('/verify-email', (req, res) => {
+  const { otp } = req.body;
+
+  // Assuming you have a Student model/schema defined and using a MongoDB-like database
+
+  // Find the student in your database using their ID or any other identifier
+  Student.findById(studentId, (err, student) => {
+    if (err || !student) {
+      // Handle error or student not found scenario
+      res.send('Student not found.'); // Display an error message or redirect as needed
+    } else {
+      // Retrieve the OTP for the student from the database
+      const studentOTP = student.otp;
+
+      // Verify the entered OTP against the retrieved OTP
+      if (otp.verifyOTP(studentOTP, otp)) {
+        // Perform any necessary tasks after successful email verification
+
+        res.redirect('/student-dashboard',{title:'student dashbord'}); // Redirect to the student dashboard page
+      } else {
+        res.send('Invalid OTP. Please try again.'); // Display an error message
+      }
+    }
+  });
+});
+
+
 app.get('/job-portal', (req, res) => {
   // Render the EJS template for the job search page
   res.render('job-search.ejs', { title: 'Job Search', jobs: [] });
