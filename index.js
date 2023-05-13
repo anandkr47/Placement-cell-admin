@@ -109,7 +109,7 @@ app.post('/verify-email/:email', (req, res) => {
       // Verify the entered OTP against the retrieved OTP
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
-        res.redirect('/student-dashboard'); // Redirect to the student dashboard page
+        res.redirect('/student_dashboard',{title:'student'}); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
