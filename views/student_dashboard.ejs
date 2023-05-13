@@ -5,23 +5,24 @@
         <div
           class="collapse navbar-collapse justify-content-around"
           id="navbarSupportedContent">
+          <ul class="nav text-purple">
+            <li class="nav-item mx-2">
+              <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/student-profile">Profile</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/student-interview">My Interview</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/job-portal">Job Portal</a>
+            </li>
+          </ul>
         <h1> STUDENT DASHBOARD</h1>
           
         </div>
-        <ul class="nav text-purple">
-          <li class="nav-item mx-2">
-            <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="/student-profile">Profile</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="/student-interview">My Interview</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="/job-portal">Job Portal</a>
-          </li>
-        </ul>
+        
       </div>
     </nav>
   </header>
