@@ -65,6 +65,27 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
+app.get('/student-dashboard/:studentId', async (req, res) => {
+  try {
+    const { studentId } = req.params;
+    
+    // Assuming you have a Student model/schema defined
+    const student = await Student.findById(studentId);
+    
+    if (!student) {
+      // Handle the case where the student is not found
+      return res.status(404).send('Student not found.');
+    }
+    
+    res.render('student-dashboard', { title: 'Student Dashboard', student });
+  } catch (error) {
+    // Handle the error if any
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 app.get('/verify-email/:email', (req, res) => {
   const { email } = req.params;
   res.render('verify-email', { title: 'Verify Email', email });
