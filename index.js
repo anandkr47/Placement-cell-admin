@@ -64,44 +64,36 @@ app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));
+
 app.get('/verify-email/:email', (req, res) => {
   const { email } = req.params;
-  // Generate OTP using otplib library
-  const otp = authenticator.generateSecret();
-
-  // Store the OTP in the session
-  req.session.otp = otp;
-  req.session.email = email;
-
   res.render('verify-email', { title: 'Verify Email', email });
 });
+
 
 app.post('/verify-email/:email', (req, res) => {
   const { otp } = req.body;
   const { email } = req.params;
-
-  // Retrieve the OTP from the session
-  const storedOTP = req.session.otp;
-
-  if (!storedOTP) {
-    res.send('OTP expired. Please try again.'); // Handle case when OTP is not stored in session
-    return;
-  }
-
-  // Verify the entered OTP against the stored OTP
-  const isValidOTP = authenticator.check(otp, storedOTP);
-
-  if (isValidOTP) {
-    // Perform any necessary tasks after successful email verification
-
-    // Clear the OTP from the session
-    req.session.otp = null;
-    req.session.email = null;
-
-    res.redirect('/student-dashboard'); // Redirect to the student dashboard page
-  } else {
-    res.send('Invalid OTP. Please try again.'); // Display an error message
-  }
+  console.log(email);
+  console.log(otp);
+  // Assuming you have a Student model/schema defined and using a MongoDB-like database
+  Student.findOne({ email }, (err, student) => {
+    if (err || !student) {
+      // Handle error or student not found scenario
+      res.send('Student not found.'); // Display an error message or redirect as needed
+    } else {
+      // Retrieve the OTP for the student from the database
+      const studentOTP = student.otp;
+      console.log(studentOTP);
+      // Verify the entered OTP against the retrieved OTP
+      if (otp === studentOTP) {
+        // Perform any necessary tasks after successful email verification
+        res.redirect('/student-dashboard'); // Redirect to the student dashboard page
+      } else {
+        res.send('Invalid OTP. Please try again.'); // Display an error message
+      }
+    }
+  });
 });
 
 app.get('/job-portal', (req, res) => {
