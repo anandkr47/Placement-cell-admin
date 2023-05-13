@@ -70,7 +70,7 @@ app.get('/verify-email/:studentId', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', studentId });
 });
 
-app.post('/verify-email', (req, res) => {
+app.post('/verify-email/:studentId', (req, res) => {
   const { otp } = req.body;
   const { studentId } = req.params;
   console.log("otp:",otp);
