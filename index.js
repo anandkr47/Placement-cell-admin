@@ -65,30 +65,29 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
-app.get('/verify-email/:studentId', (req, res) => {
-  const { studentId } = req.params;
-  res.render('verify-email', { title: 'Verify Email', studentId });
+app.get('/verify-email/:email', (req, res) => {
+  const { email } = req.params;
+  res.render('verify-email', { title: 'Verify Email', email });
 });
 
-app.post('/verify-email/:studentId', (req, res) => {
+
+app.post('/verify-email/:email', (req, res) => {
   const { otp } = req.body;
-  const { studentId } = req.params;
-  console.log("otp:",otp);
-  console.log("studentid:",studentId);
+  const { email } = req.params;
+
   // Assuming you have a Student model/schema defined and using a MongoDB-like database
-  Student.findOne({ _id: studentId }, (err, student) => {
+  Student.findOne({ email }, (err, student) => {
     if (err || !student) {
       // Handle error or student not found scenario
       res.send('Student not found.'); // Display an error message or redirect as needed
     } else {
       // Retrieve the OTP for the student from the database
       const studentOTP = student.otp;
-      console.log("student otp:",studentOTP);
+
       // Verify the entered OTP against the retrieved OTP
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
-
-        res.redirect('/student-dashboard', { title: 'student dashboard' }); // Redirect to the student dashboard page
+        res.redirect('/student-dashboard'); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
