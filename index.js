@@ -64,10 +64,9 @@ app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));
-
 app.get('/verify-email/:email', (req, res) => {
   const { email } = req.params;
-  // Generate OTP using authenticator library
+  // Generate OTP using otplib library
   const otp = authenticator.generateSecret();
 
   // Store the OTP in the session
@@ -90,7 +89,7 @@ app.post('/verify-email/:email', (req, res) => {
   }
 
   // Verify the entered OTP against the stored OTP
-  const isValidOTP = authenticator.verifyToken(storedOTP, otp);
+  const isValidOTP = authenticator.check(otp, storedOTP);
 
   if (isValidOTP) {
     // Perform any necessary tasks after successful email verification
