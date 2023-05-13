@@ -77,13 +77,17 @@ app.get('/student_dashboard/:email', async (req, res) => {
       return res.status(404).send('Student not found.');
     }
 
-    res.render('student_dashboard', { title: 'Student Dashboard', student });
+    res.render('student_dashboard', {
+      title: 'Student Dashboard',
+      student: student, // Pass the student variable as a local variable
+    });
   } catch (error) {
     // Handle the error if any
     console.error(error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 
 app.get('/verify-email/:email', (req, res) => {
