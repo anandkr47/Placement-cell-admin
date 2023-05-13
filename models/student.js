@@ -2,9 +2,6 @@ const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema(
   {
-    
-      
-      
     name: {
       type: String,
       required: true,
@@ -55,6 +52,10 @@ const studentSchema = new mongoose.Schema(
         },
       },
     ],
+    otp: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

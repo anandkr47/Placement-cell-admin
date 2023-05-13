@@ -53,6 +53,7 @@ module.exports.create = async (req, res) => {
       req.flash('error', 'Student already exists!');
       return res.redirect('back');
     }
+    const otp = authenticator.generateSecret();
 
     const newStudent = await Student.create({
       name,
@@ -63,12 +64,13 @@ module.exports.create = async (req, res) => {
       react_score,
       webdev_score,
       placement_status,
+      otp: otp,
     });
 
     const joiningLink = `https://placement-cell-fj5h.onrender.com/verify-email/${newStudent.email}`;
 
 
-    const otp = authenticator.generateSecret();
+    
 
 
 
