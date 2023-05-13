@@ -65,12 +65,12 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
-app.get('/student_dashboard/:studentId', async (req, res) => {
+app.get('/student_dashboard/:email', async (req, res) => {
   try {
-    const { studentId } = req.params;
+    const { email } = req.params;
     
     // Assuming you have a Student model/schema defined
-    const student = await Student.findById(studentId);
+    const student = await Student.findOne(email );
     
     if (!student) {
       // Handle the case where the student is not found
@@ -109,7 +109,7 @@ app.post('/verify-email/:email', (req, res) => {
       // Verify the entered OTP against the retrieved OTP
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
-        res.redirect('/student_dashboard'); // Redirect to the student dashboard page
+        res.redirect('/student_dashboard/:email'); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
