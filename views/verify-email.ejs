@@ -7,8 +7,8 @@
 </head>
 <body>
   <h1>Email Verification</h1>
-  <p>Please enter the OTP sent to your email:</p>
-  <form method="POST" action="/verify-email/{{email}}">
+  <p>Please enter the OTP sent to your email: <%= email %></p>
+  <form method="POST" action="/verify-email/<%= email %>">
     <!-- Update the action attribute -->
     <input type="text" name="otp" placeholder="Enter OTP">
     <button type="submit">Verify</button>
