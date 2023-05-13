@@ -65,7 +65,7 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
-app.get('/student-dashboard/:studentId', async (req, res) => {
+app.get('/student_dashboard/:studentId', async (req, res) => {
   try {
     const { studentId } = req.params;
     
@@ -77,7 +77,7 @@ app.get('/student-dashboard/:studentId', async (req, res) => {
       return res.status(404).send('Student not found.');
     }
     
-    res.render('student-dashboard', { title: 'Student Dashboard', student });
+    res.render('student_dashboard', { title: 'Student Dashboard', student });
   } catch (error) {
     // Handle the error if any
     console.error(error);
