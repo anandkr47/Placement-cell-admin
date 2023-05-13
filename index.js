@@ -68,15 +68,15 @@ app.use("/", require("./routes"));
 app.get('/student_dashboard/:email', async (req, res) => {
   try {
     const { email } = req.params;
-    
+
     // Assuming you have a Student model/schema defined
-    const student = await Student.findOne(email );
-    
+    const student = await Student.findOne({ email });
+
     if (!student) {
       // Handle the case where the student is not found
       return res.status(404).send('Student not found.');
     }
-    
+
     res.render('student_dashboard', { title: 'Student Dashboard', student });
   } catch (error) {
     // Handle the error if any
@@ -109,13 +109,14 @@ app.post('/verify-email/:email', (req, res) => {
       // Verify the entered OTP against the retrieved OTP
       if (otp === studentOTP) {
         // Perform any necessary tasks after successful email verification
-        res.redirect('/student_dashboard/:email'); // Redirect to the student dashboard page
+        res.redirect(`/student_dashboard/${email}`); // Redirect to the student dashboard page
       } else {
         res.send('Invalid OTP. Please try again.'); // Display an error message
       }
     }
   });
 });
+
 
 app.get('/job-portal', (req, res) => {
   // Render the EJS template for the job search page
