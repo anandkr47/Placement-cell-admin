@@ -18,25 +18,23 @@ router.post('/submit-query', (req, res) => {
   
   // Compose the email message
   const mailOptions = {
-    from: email,
+    from: `<${email}>`,
     to: process.env.EMAIL_USER, // Update with your email address
     subject: 'Query from Placement Cell',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
-// Send the email
-transporter.sendMail(mailOptions, (error, info) => {
+
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log('Error sending email:', error);
-      alert('Error sending email');
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent:', info.response);
-      alert('Email sent successfully');
-      res.redirect('/student_dashboard/' + encodeURIComponent(email));
+      alert("Email sent successfully");
+      res.redirect(`/student_dashboard?email=${encodeURIComponent(email)}`);
     }
   });
-  
-  
 });
 
 module.exports = router;
