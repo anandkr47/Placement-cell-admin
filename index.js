@@ -22,7 +22,9 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: flase }));
+app.use(bodyParser.json());
+
 
 app.use(cookieParser());
 
