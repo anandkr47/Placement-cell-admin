@@ -45,8 +45,8 @@
       <div class="col">
         <% if (student) { %>
         <div class="student-details">
-          <h3>Welcome, <%= student.name %></h3>
-          <table class="table">
+          <h3 class="welcome-text">Welcome, <%= student.name %></h3>
+          <table class="table student-table">
             <tbody>
               <tr>
                 <td><strong>Name</strong></td>
@@ -72,29 +72,29 @@
                 <td><strong>DSA score</strong></td>
                 <td><%= student.dsa_score %></td>
                 <td>
-                  <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" class="btn btn-primary">Practice DSA</a>
+                  <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" target="_blank" class="btn btn-primary">Practice DSA</a>
                 </td>
               </tr>
               <tr>
                 <td><strong>Web development score</strong></td>
                 <td><%= student.webdev_score %></td>
                 <td>
-                  <a href="https://www.freecodecamp.org/news/tag/web-development/" class="btn btn-primary">Practice web-development</a>
+                  <a href="https://www.freecodecamp.org/news/tag/web-development/" target="_blank" class="btn btn-primary">Practice Web Development</a>
                 </td>
               </tr>
               <tr>
                 <td><strong>React score</strong></td>
                 <td><%= student.react_score %></td>
                 <td>
-                  <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" class="btn btn-primary">Practice React</a>
+                  <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" target="_blank" class="btn btn-primary">Practice React</a>
                 </td>
               </tr>
-              </tbody>
+            </tbody>
           </table>
         </div>
         <% } %>
       </div>
     </div>
   </div>
-   
+  
   
