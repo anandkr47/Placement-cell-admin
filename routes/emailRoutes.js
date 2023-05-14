@@ -28,15 +28,22 @@ router.post('/submit-query', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log('Error sending email:', error);
-      alert('Error sending email');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error sending email',
+      });
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent:', info.response);
-      alert('Email sent successfully');
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Email sent successfully',
+      });
       res.status(200).send('Email sent successfully');
     }
   });
-  
   
 });
 
