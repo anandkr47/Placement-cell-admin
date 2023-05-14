@@ -40,6 +40,50 @@
       </div>
     </nav>
   </header>
-  
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% if (student) { %>
+        <h3>Welcome, <%= student.name %></h3>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td><%= student.name %></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><%= student.email %></td>
+            </tr>
+            <tr>
+              <td>College</td>
+              <td><%= student.college %></td>
+            </tr>
+            <tr>
+              <td>Batch</td>
+              <td><%= student.batch %></td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td><%= student.placement_status %></td>
+            </tr>
+            <tr>
+              <td>DSA score</td>
+              <td><%= student.dsa_score %></td>
+            </tr>
+            <tr>
+              <td>Web development score</td>
+              <td><%= student.webdev_score %></td>
+            </tr>
+            <tr>
+              <td>React score</td>
+              <td><%= student.react_score %></td>
+            </tr>
+          </tbody>
+        </table>
+        <% } %>
+      </div>
+    </div>
+  </div>
   
   
