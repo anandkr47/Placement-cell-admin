@@ -42,6 +42,7 @@ router.post('/submit-query', (req, res) => {
         text: 'Email sent successfully',
       });
       res.status(200).send('Email sent successfully');
+      res.redirect('/student_dashboard/<%= student.email %>');
     }
   });
   
