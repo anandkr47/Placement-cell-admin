@@ -70,10 +70,6 @@ module.exports.create = async (req, res) => {
     const joiningLink = `https://placement-cell-fj5h.onrender.com/verify-email/${newStudent.email}`;
 
 
-    
-
-
-
     const emailSubject = 'Placement Cell Joining Link';
     const emailContent = `
       <h3>Placement Cell Joining Link</h3>
