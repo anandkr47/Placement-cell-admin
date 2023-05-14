@@ -368,7 +368,7 @@ h3 {
           text: 'Email sent successfully'
         }).then(() => {
           // Redirect to student dashboard
-          window.location.href = '/student_dashboard/<%= encodeURIComponent(email) %>';
+          window.location.href = '/student_dashboard/<%=student.email %>';
         });
       } else {
         Swal.fire({
