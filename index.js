@@ -11,6 +11,7 @@ const expressLayouts = require("express-ejs-layouts");
 const fetch = require('cross-fetch');
 const Student = require("./models/student");
 const { authenticator } = require('otplib');
+const emailRoutes = require('./routes/emailRoutes');
 
 // used for session cookie
 const session = require("express-session");
@@ -64,6 +65,8 @@ app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));
+app.use('/', emailRoutes);
+
 
 app.get('/student_dashboard/:email', async (req, res) => {
   try {
