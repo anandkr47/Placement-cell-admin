@@ -31,8 +31,7 @@ router.post('/submit-query', (req, res) => {
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent:', info.response);
-      alert("Email sent successfully");
-      res.redirect(`/student_dashboard?email=${encodeURIComponent(email)}`);
+      res.status(200).send('Email sent successfully');
     }
   });
 });
