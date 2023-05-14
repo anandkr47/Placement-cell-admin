@@ -349,6 +349,7 @@ h3 {
   </script>
 
 <!-- Form submission handling and notification display -->
+<!-- Form submission handling and notification display -->
 <script>
   document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -359,9 +360,8 @@ h3 {
       method: 'POST',
       body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
+    .then(response => {
+      if (response.ok) {
         Swal.fire({
           icon: 'success',
           title: 'Success!',
