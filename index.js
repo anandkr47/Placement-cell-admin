@@ -101,7 +101,7 @@ app.get('/verify-email/:email', (req, res) => {
 });
 
 app.get('recomended_courses', (req, res) => {
-  res.render('recomended_courses', { title: 'Recomended Courses' });
+  res.render('recomended_courses.ejs', { title: 'Recomended Courses' });
 });
 
 app.post('/verify-email/:email', (req, res) => {
