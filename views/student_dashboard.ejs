@@ -129,8 +129,13 @@
             <% } %>
           </div>
         </div>
-    <main><%- body %></main>
-    <%- include('footer'); %>
+        <main id="content">
+          <!-- The content will be dynamically updated here -->
+        </main>
+    <footer class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: wheat">
+        © 2021 Placement Cell
+      </div>
 
     <script>
       <% if(flash.success && flash.success.length > 0) {%>
@@ -152,6 +157,29 @@
           }).show()
       <%} %>
     </script>
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const contentContainer = document.getElementById('content');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = link.getAttribute('href');
+
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            contentContainer.innerHTML = data;
+          })
+          .catch((error) => {
+            console.log('Error:', error);
+            // Handle error if necessary
+          });
+      });
+    });
+  });
+</script>
 
     <!-- JavaScript Bundle with Popper -->
     <script
