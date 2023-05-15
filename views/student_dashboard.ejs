@@ -1,396 +1,163 @@
-<style>
-    /* Add your own custom CSS styles to enhance the appearance */
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://cdn-icons-png.flaticon.com/512/759/759823.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/a8162db7fd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="mb-4" style="background-image: url('/images/bg.jpg'); background-size: cover; width: 100%;">
 
-.container {
-  padding: 20px;
-}
-
-.welcome-text {
-  margin-bottom: 20px;
-}
-
-.table {
-  margin-bottom: 20px;
-}
-
-.course-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.course {
-  width: calc(33% - 20px);
-  margin-bottom: 20px;
-}
-
-.course a {
-  display: block;
-  text-decoration: none;
-  color: #333;
-}
-
-.course img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.course h4 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-.playlist-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.playlist {
-  width: calc(33% - 20px);
-  margin-bottom: 20px;
-}
-
-.playlist a {
-  display: block;
-  text-decoration: none;
-  color: #333;
-}
-
-.playlist img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.playlist h4 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-h3 {
-    color: white; /* Dark blue color */
-  }
-  h4{
-    color:lightblue
-  }
-  td{
-    color: black; /* Dark blue color */
-  }
-  .student-table {
-    background-color: #f2f2f2;
-  }
-
-  
-</style>
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css" />
-
-
-<header>
-  <nav class="navbar navbar-expand-lg" style="background-color: wheat">
-    <div class="container-fluid">
-      <a class="navbar-brand h1" href="#">
-        <i class="fas fa-laptop-code"></i> Placement Cell
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="collapse navbar-collapse justify-content-around"
-        id="navbarSupportedContent"
-      >
-          <ul class="nav text-purple">
-            <li class="nav-item mx-2">
-              <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#">My Interview</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="/job-portal">Job Portal</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="https://online-compilerby-anand.netlify.app/">Code Here</a>
-            </li>
-          </ul>
-        <h3> <%= student.name %></h3>
-          
-        </div>
-        
-      </div>
-    </nav>
-  </header>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <% if (student) { %>
-        <div class="student-details">
-          <h3 class="welcome-text">Welcome, <%= student.name %></h3>
-          <table class="table student-table">
-            <tbody>
-              <tr>
-                <td><strong>Name</strong></td>
-                <td><%= student.name %></td>
-              </tr>
-              <tr>
-                <td><strong>Email</strong></td>
-                <td><%= student.email %></td>
-              </tr>
-              <tr>
-                <td><strong>College</strong></td>
-                <td><%= student.college %></td>
-              </tr>
-              <tr>
-                <td><strong>Batch</strong></td>
-                <td><%= student.batch %></td>
-              </tr>
-              <tr>
-                <td><strong>Status</strong></td>
-                <td><%= student.placement_status %></td>
-              </tr>
-              <tr>
-                <td><strong>DSA score</strong></td>
-                <td><%= student.dsa_score %></td>
-                <td>
-                  <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" target="_blank" class="btn btn-primary">Practice DSA</a>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Web development score</strong></td>
-                <td><%= student.webdev_score %></td>
-                <td>
-                  <a href="https://www.freecodecamp.org/news/tag/web-development/" target="_blank" class="btn btn-primary">Practice Web Development</a>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>React score</strong></td>
-                <td><%= student.react_score %></td>
-                <td>
-                  <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" target="_blank" class="btn btn-primary">Practice React</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <% } %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h3>Free Online Courses</h3>
-        <div class="course-container">
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=8dWL3wF_OMw" target="_blank">
-              <img src="https://img.youtube.com/vi/8dWL3wF_OMw/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>JavaScript Full Course for Beginners</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=RGOj5yH7evk" target="_blank">
-              <img src="https://img.youtube.com/vi/RGOj5yH7evk/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>git and github - Crash Course</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=DLX62G4lc44" target="_blank">
-              <img src="https://img.youtube.com/vi/DLX62G4lc44/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>React Tutorial for Beginners</h4>
-            </a>
-          </div>
-          <!-- Add more courses here -->
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=3qBXWUpoPHo" target="_blank">
-              <img src="https://img.youtube.com/vi/3qBXWUpoPHo/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>Python Programming for Beginners</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=BGTx91t8q50" target="_blank">
-              <img src="https://img.youtube.com/vi/BGTx91t8q50/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>Java Full Course For Beginner</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=4F2m91eKmts" target="_blank">
-              <img src="https://img.youtube.com/vi/4F2m91eKmts/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>HTML and CSS Crash Course</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=HVjjoMvutj4" target="_blank">
-              <img src="https://img.youtube.com/vi/HVjjoMvutj4/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>Web Development Complete Course</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=5PdEmeopJVQ" target="_blank">
-              <img src="https://img.youtube.com/vi/5PdEmeopJVQ/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>Java Full Stack Development Course</h4>
-            </a>
-          </div>
-          <div class="course">
-            <a href="https://www.youtube.com/watch?v=35EQXmHKZYs" target="_blank">
-              <img src="https://img.youtube.com/vi/35EQXmHKZYs/maxresdefault.jpg" alt="Course thumbnail">
-              <h4>Spring Boot Tutorial Full Course</h4>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h3>Top Playlists for DSA</h3>
-          <div class="playlist-container">
-            <ul class="playlist-list">
-              <li class="playlist-item">
-                <a href="https://www.youtube.com/playlist?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ" target="_blank">
-                  Data Structures and Algorithms Playlist by Kunal Kushwaha
-                </a>
-              </li>
-              <!-- Add more playlist items here -->
-              <li class="playlist-item">
-                <a href="https://www.youtube.com/playlist?list=PLAXnLdrLnQpRcveZTtD644gM9uzYqJCwr" target="_blank">
-                  Data Structures and Algorithms by Abdul Bari
-                </a>
-              </li>
-              <li class="playlist-item">
-                <a href="https://www.youtube.com/playlist?list=PLpO3gASfJEIJ6pTFH8pK5T8-2Xg4oGqEI" target="_blank">
-                  Cracking the Coding Interview - Data Structures & Algorithms
-                </a>
-              </li>
-              <li class="playlist-item">
-                <a href="https://www.youtube.com/playlist?list=PLDzeHZWIZsTryvtXdMr6rPh4IDexB5NIA" target="_blank">
-                  Complete C++ Placement DSA Course CodeHelp - by Babbar
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h3>Recommended DSA Sheets</h3>
-          <div class="dsa-sheets-container">
-            <ul class="dsa-sheets-list">
-              <li class="dsa-sheet-item">
-                <a href="https://www.geeksforgeeks.org/dsa-sheet-by-love-babbar/" target="_blank">
-                  DSA Sheet by Love Babbar
-                </a>
-              </li>
-              <!-- Add more DSA sheets here -->
-              <li class="dsa-sheet-item">
-                <a href="https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit#gid=0" target="_blank">
-                  DSA Sheet By Apna College
-                </a>
-              </li>
-              <li class="dsa-sheet-item">
-                <a href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/" target="_blank">
-                  Strivers A2Z DSA Course/Sheet
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-      <footer class="footer mt-auto py-3">
-        <div class="container">
-          <div class="row">
-            
-            <div class="col-md-6">
-              <h3>Submit a Query</h3>
-              <form id="myForm" action="/submit-query" method="POST">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="mb-3">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control" id="message" name="message" rows="3" placeholder="Enter your query" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+    <header>
+      <nav class="navbar navbar-expand-lg" style="background-color: wheat">
+        <div class="container-fluid">
+          <a class="navbar-brand h1" href="#">
+            <i class="fas fa-laptop-code"></i> Placement Cell
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-around"
+            id="navbarSupportedContent"
+          >
+              <ul class="nav text-purple">
+                <li class="nav-item mx-2">
+                  <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#">My Interview</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="/job-portal">Job Portal</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="/recomended_courses">Code Here</a>
+                </li>
+              </ul>
+            <h3> <%= student.name %></h3>
+              
             </div>
+            
           </div>
-          <div class="col-md-6">
-            <p class="text-muted">Copyright Placement Cell &copy; 2023</p>
-
+        </nav>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <% if (student) { %>
+            <div class="student-details">
+              <h3 class="welcome-text">Welcome, <%= student.name %></h3>
+              <table class="table student-table">
+                <tbody>
+                  <tr>
+                    <td><strong>Name</strong></td>
+                    <td><%= student.name %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email</strong></td>
+                    <td><%= student.email %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>College</strong></td>
+                    <td><%= student.college %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Batch</strong></td>
+                    <td><%= student.batch %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Status</strong></td>
+                    <td><%= student.placement_status %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DSA score</strong></td>
+                    <td><%= student.dsa_score %></td>
+                    <td>
+                      <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" target="_blank" class="btn btn-primary">Practice DSA</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Web development score</strong></td>
+                    <td><%= student.webdev_score %></td>
+                    <td>
+                      <a href="https://www.freecodecamp.org/news/tag/web-development/" target="_blank" class="btn btn-primary">Practice Web Development</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>React score</strong></td>
+                    <td><%= student.react_score %></td>
+                    <td>
+                      <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" target="_blank" class="btn btn-primary">Practice React</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <% } %>
           </div>
         </div>
-      </footer>
-          
-  
-  
-  <!-- Add SweetAlert2 library -->
+    <main><%- body %></main>
+    <%- include('footer'); %>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.js"></script>
-  <script>
-    // Initialize SweetAlert2
-    Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Welcome to Placement Cell',
-    });
-  </script>
+    <script>
+      <% if(flash.success && flash.success.length > 0) {%>
+          new Noty({
+            theme: 'relax',
+            text: '<%= flash.success %>',
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500,
+          }).show()
+      <%} %>
+      <% if(flash.error && flash.error.length > 0) {%>
+          new Noty({
+            theme: 'relax',
+            text: '<%= flash.error %>',
+            type: 'error',
+            layout: 'topRight',
+            timeout: 1500,
+          }).show()
+      <%} %>
+    </script>
 
-<!-- Form submission handling and notification display -->
-<!-- Form submission handling and notification display -->
-<script>
-  document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
-
-    fetch('/submit-query', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        return response.text(); // Return the response body as text
-      } else {
-        throw new Error('Error sending email');
-      }
-    })
-    .then(responseText => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Email sent successfully'
-      }).then(() => {
-        // Redirect to student dashboard or perform other actions
-        window.location.href = '/student_dashboard/<%= student.email %>';
-      });
-    })
-    .catch(error => {
-      console.log('Error:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Error: ' + error.message
-      });
-    });
-  });
-</script>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
