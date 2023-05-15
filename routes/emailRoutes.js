@@ -31,7 +31,7 @@ router.post('/submit-query', (req, res) => {
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent:', info.response);
-      res.status(200).send('Email sent successfully');
+      res.status(200).send('Query sent successfully');
     }
   });
 });
