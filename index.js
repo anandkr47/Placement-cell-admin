@@ -100,6 +100,9 @@ app.get('/verify-email/:email', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', email });
 });
 
+app.get('recomended_courses', (req, res) => {
+  res.render('recomended_courses', { title: 'Recomended Courses' });
+});
 
 app.post('/verify-email/:email', (req, res) => {
   const { otp } = req.body;
