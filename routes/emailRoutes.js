@@ -28,10 +28,12 @@ router.post('/submit-query', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log('Error sending email:', error);
-      res.status(500).send('Error sending email');
+      req.flash('error', 'error sending email!');
+      return res.redirect('back');
     } else {
       console.log('Email sent:', info.response);
-      res.status(200).send('Query sent successfully');
+      req.flash('success', 'Query sent!');
+    return res.redirect('back');
     }
   });
 });

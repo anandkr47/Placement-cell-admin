@@ -23,6 +23,7 @@ const sendEmail = (to, subject, content) => {
       console.log('Error sending email:', error);
     } else {
       console.log('Email sent:', info.response);
+      
     }
   });
 };
