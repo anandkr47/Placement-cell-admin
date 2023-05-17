@@ -12,7 +12,8 @@ const fetch = require('cross-fetch');
 const Student = require("./models/student");
 const { authenticator } = require('otplib');
 const emailRoutes = require('./routes/emailRoutes');
-
+const taskemailRoutes = require('./routes/taskemailRoutes');
+const dsataskRoutes=require('./routes/dsataskRoutes');
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -68,6 +69,8 @@ app.use(customMware.setFlash);
 // use express router
 app.use("/", require("./routes"));
 app.use('/', emailRoutes);
+app.use('/',taskemailRoutes);
+app.use('/',dsataskRoutes);
 
 
 app.get('/student_dashboard/:email', async (req, res) => {
