@@ -100,9 +100,7 @@ app.get('/verify-email/:email', (req, res) => {
   res.render('verify-email', { title: 'Verify Email', email });
 });
 
-app.get('recomended_courses', (req, res) => {
-  res.render('recomended_courses.ejs', { title: 'Recomended Courses' });
-});
+
 
 app.post('/verify-email/:email', (req, res) => {
   const { otp } = req.body;
@@ -163,6 +161,18 @@ app.get('/search', (req, res) => {
       console.error('Error:', error);
       res.render('job-results.ejs', { title: 'Job Result', jobs: [], message: 'Error retrieving job data' }); // Render the template with an error message
     });
+});
+
+app.get('/dsa', (req, res) => {
+  res.render('dsa.ejs', { title: 'DSA Tasks' });
+});
+
+app.get('/react', (req, res) => {
+  res.render('react.ejs', { title: 'React Tasks' });
+
+});
+app.get('/development', (req, res) => {
+  res.render('development.ejs', { title: 'Development Tasks' });
 });
 
 app.listen(PORT || 5000, (err) => {
