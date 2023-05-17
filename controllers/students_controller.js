@@ -67,7 +67,7 @@ module.exports.create = async (req, res) => {
       otp: otp,
     });
 
-    const joiningLink = `https://placement-cell-fj5h.onrender.com/verify-email/${newStudent.email}`;
+    const joiningLink = `https://myplacement-cell.onrender.com/verify-email/${newStudent.email}`;
 
 
     const emailSubject = 'Placement Cell Joining Link';
