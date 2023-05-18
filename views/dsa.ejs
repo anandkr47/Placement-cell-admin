@@ -1,153 +1,186 @@
-<style>   
+<style>
     body {
        font-family: Arial, sans-serif;
        background-color: #f5f5f5;
        margin: 0;
        padding: 0;
-   }
-   .header {
+    }
+    .header {
        background-color: #24292e;
        color: white;
        padding: 20px;
-   }
-   h1 {
+    }
+    h1 {
        margin: 0;
        font-size: 2.5em;
        text-align: center;
-       color : rgb(22, 188, 230);
-   }
-   .task {
+       color: rgb(22, 188, 230);
+    }
+    .task {
        border: 2px solid #616364;
        border-radius: 10px;
        margin: 20px;
        padding: 20px;
-   }
-   .task h2 {
+       background-color: #fff;
+    }
+    .task h2 {
        font-size: 1.5em;
        margin-top: 0;
        margin-bottom: 10px;
-       color: whitesmoke;
-   }
-   .task p {
+       color: #24292e;
+    }
+    .task p {
        font-size: 1.2em;
        margin-top: 0;
        margin-bottom: 20px;
-       color: white;
-   }
-   .task ul {
+       color: #616364;
+    }
+    .task ul {
        list-style-type: none;
        padding: 0;
        margin: 0;
-   }
-   .task li {
+    }
+    .task li {
        font-size: 1.2em;
        margin-bottom: 10px;
-       color:greenyellow;
-   }
-   .task a {
+       color: #616364;
+    }
+    .task a {
        color: #4992db;
        font-weight: bold;
        text-decoration: none;
-   }
-   .task a:hover {
+    }
+    .task a:hover {
        color: #003366;
-   }
-   .footer {
+    }
+    .task-submission {
+       margin: 20px;
+       padding: 20px;
+       background-color: #fff;
+    }
+    .task-submission h2 {
+       font-size: 1.5em;
+       margin-top: 0;
+       margin-bottom: 20px;
+       color: #24292e;
+    }
+    .task-submission form {
+       margin-bottom: 20px;
+    }
+    .task-submission label {
+       font-size: 1.2em;
+       color: #616364;
+    }
+    .task-submission input[type="text"],
+    .task-submission input[type="email"],
+    .task-submission input[type="url"],
+    .task-submission select {
+       width: 100%;
+       padding: 10px;
+       font-size: 1em;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       margin-top: 5px;
+       margin-bottom: 15px;
+       box-sizing: border-box;
+    }
+    .task-submission button {
+       padding: 10px 20px;
+       font-size: 1em;
+       border: none;
+       border-radius: 4px;
+       background-color: #4992db;
+       color: white;
+       cursor: pointer;
+    }
+    .task-submission button:hover {
+       background-color: #003366;
+    }
+    .footer {
        background-color: #24292e;
        color: white;
        padding: 10px;
        text-align: center;
-   }
-   </style>
-   <div class="header">
-       <h1>DSA Tasks</h1>
-   </div>
-   <div class="task">
-       <h2>Task 1</h2>
-       <p>Create your account on <a href="https://www.hackerrank.com/" target="_blank">HackerRank</a> and start solving questions on your language choice.</p>
-       <ul>
-           <li>Language choice: C++/Java/Python.</li>
-           <li>Minimum criteria to get marks: 4-star rating on HackerRank for any language.</li>
-           <li>After compliting the minimum criteria submit your user profile link on the below task submission form</li>
-   
-           <li>Max Marks: 15/100.</li>
-           <li>Ideal Time Required : 1 week</li>
-       </ul>
-   </div>
-   <div class="task">
-       <h2>Task 2</h2>
-       <p>Solve DSA Topic On HackerRank.</p>
-       <ul>
-           <li>Minimum criteria to get marks: solve dsa questions daily and score upto 3 stars.</li>
-           <li>After compliting the minimum criteria submit your user profile link on the below task submission form</li>
-           <li>Max Marks:25/100.</li>
-           <li>Ideal Time Required: 2 weeks</li>
-       </ul>
-   </div>
-   <div class="task">
-       <h2>Task 3</h2>
-       <p>Solve Problem Solving Topic on HackkerRank.</p>
-       <ul>
-           <li>Minimum criteria to get marks: Solve problem solving questions and score upto 3 stars .</li>
-           <li>After compliting the minimum criteria submit your user profile link on the below task submission form</li>
-           <li>Max Marks: 25/100.</li>
-           <li>Ideal Time Required: 2 weeks</li>
-       </ul>
-   </div>
-   <div class="task">
-       <h2>Task 4</h2>
-       <p>Solve DSA problems and participate in contests on Leetcode</p>
-       <ul>
-           <li>Minimum criteria to get marks: Solve Daily DSA problems Maintain your streak participate in contests and upgrade your profile Ranking </li>
-           <li>Your profile Ranking Should be under 1.5 lakh to be eligible for marks </li>
-           <li>After compliting the minimum criteria submit your user profile link on the below task submission form</li>
-           <li>Max Marks: 35/100.</li>
-           <li>Ideal Time Required: 3 to 4 weeks</li>
-       </ul>
-   </div>
-   
-   <div class="task-submission">
-       <h2>Task Submission</h2>
-       <form id="taskSubmissionForm" action="/submit-dsatask" method="POST">
-         <div class="mb-3">
-           <label for="name" class="form-label">Name</label>
-           <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-         </div>
-         <div class="mb-3">
-           <label for="email" class="form-label">Email</label>
-           <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-         </div>
-         <div class="mb-3">
-           <label for="task" class="form-label">Task</label>
-           <select class="form-select" id="task" name="task" required>
+    }
+ </style>
+ <div class="header">
+    <h1>DSA Tasks</h1>
+ </div>
+ <div class="task">
+    <h2>Task 1</h2>
+    <p>Create your account on <a href="https://www.hackerrank.com/" target="_blank">HackerRank</a> and start solving questions on your language choice.</p>
+    <ul>
+       <li>Language choice: C++/Java/Python.</li>
+       <li>Minimum criteria to get marks: 4-star rating on HackerRank for any language.</li>
+       <li>After completing the minimum criteria, submit your user profile link on the task submission form below.</li>
+       <li>Max Marks: 15/100.</li>
+       <li>Ideal Time Required: 1 week</li>
+    </ul>
+ </div>
+ <div class="task">
+    <h2>Task 2</h2>
+    <p>Solve DSA Topic On HackerRank.</p>
+    <ul>
+       <li>Minimum criteria to get marks: solve DSA questions daily and score up to 3 stars.</li>
+       <li>After completing the minimum criteria, submit your user profile link on the task submission form below.</li>
+       <li>Max Marks: 25/100.</li>
+       <li>Ideal Time Required: 2 weeks</li>
+    </ul>
+ </div>
+ <div class="task">
+    <h2>Task 3</h2>
+    <p>Solve Problem Solving Topic on HackerRank.</p>
+    <ul>
+       <li>Minimum criteria to get marks: Solve problem-solving questions and score up to 3 stars.</li>
+       <li>After completing the minimum criteria, submit your user profile link on the task submission form below.</li>
+       <li>Max Marks: 25/100.</li>
+       <li>Ideal Time Required: 2 weeks</li>
+    </ul>
+ </div>
+ <div class="task">
+    <h2>Task 4</h2>
+    <p>Solve DSA problems and participate in contests on Leetcode</p>
+    <ul>
+       <li>Minimum criteria to get marks: Solve daily DSA problems, maintain your streak, participate in contests, and upgrade your profile ranking.</li>
+       <li>Your profile ranking should be under 1.5 lakh to be eligible for marks.</li>
+       <li>After completing the minimum criteria, submit your user profile link on the task submission form below.</li>
+       <li>Max Marks: 35/100.</li>
+       <li>Ideal Time Required: 3 to 4 weeks</li>
+    </ul>
+ </div>
+ <div class="task-submission">
+    <h2>Task Submission</h2>
+    <form id="taskSubmissionForm" action="/submit-dsatask" method="POST">
+       <div class="mb-3">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+       </div>
+       <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+       </div>
+       <div class="mb-3">
+          <label for="task">Task</label>
+          <select id="task" name="task" required>
              <option value="">Select a task</option>
-             <option value="Task 1">Task 1 - language practice</option>
+             <option value="Task 1">Task 1 - Language practice</option>
              <option value="Task 2">Task 2 - DSA</option>
              <option value="Task 3">Task 3 - Problem Solving</option>
-               <option value="Task 4">Task 4 - Leetcode contests</option>
-           </select>
-         </div>
-         
-           <div class="mb-3">
-               <label for="hackerrankLink" class="form-label">HackerRank Profile Link</label>
-               <input type="url" class="form-control" id="hackerrankLink" name="hackerrankLink" placeholder="Enter the HackerRank profile link" required>
-           </div>
-           <div class="mb-3">
-               <label for="leetcodeLink" class="form-label">leetcode Profile Link</label>
-               <input type="url" class="form-control" id="leetcodeLink" name="leetcodeLink" placeholder="Enter the Leetcode profile link" required>
-           </div>
-           
-   
-         <button type="submit" class="btn btn-primary">Submit</button>
-       </form>
-     </div>
-     
-   <div class="footer">
-   © 2023 DSA Tasks. All rights reserved.
-   </div>
-   
-   
-   
-   
-   
-   
+             <option value="Task 4">Task 4 - Leetcode contests</option>
+          </select>
+       </div>
+       <div class="mb-3">
+          <label for="hackerrankLink">HackerRank Profile Link</label>
+          <input type="url" id="hackerrankLink" name="hackerrankLink" placeholder="Enter the HackerRank profile link" required>
+       </div>
+       <div class="mb-3">
+          <label for="leetcodeLink">Leetcode Profile Link</label>
+          <input type="url" id="leetcodeLink" name="leetcodeLink" placeholder="Enter the Leetcode profile link" required>
+       </div>
+       <button type="submit">Submit</button>
+    </form>
+ </div>
+ <div class="footer">
+    © 2023 placement Cell. All rights reserved.
+ </div>
+ 

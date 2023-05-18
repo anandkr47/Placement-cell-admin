@@ -9,12 +9,21 @@
         background-color: #24292e;
         color: white;
         padding: 20px;
+        position: relative;
     }
-    h1 {
+    .header h1 {
         margin: 0;
         font-size: 2.5em;
         text-align: center;
-        color : rgb(22, 188, 230);
+        color: rgb(22, 188, 230);
+    }
+    .header img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
     }
     .task {
         border: 2px solid #616364;
@@ -134,13 +143,8 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-  </div>
+</div>
   
 <div class="footer">
-© 2023 DSA Tasks. All rights reserved.
+    © 2023 Placement cell. All rights reserved.
 </div>
-
-
-
-
-

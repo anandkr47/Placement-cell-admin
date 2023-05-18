@@ -1,0 +1,71 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        color: #333333;
+    }
+    
+    .form-link {
+        margin-top: 20px;
+    }
+    
+    .copy-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .copy-button:hover {
+        background-color: #45a049;
+    }
+</style>
+<div class="container">
+    <h1>Refer Your Friends</h1>
+    <img src="/images/emogi.gif" alt="emogi"/>
+    <p>Share this link with your friends:</p>
+    <div class="form-link">
+        <input type="text" id="formLink" value="https://docs.google.com/forms/your-form-link" readonly>
+        <button onclick="copyToClipboard()">Copy Link</button>
+    </div>
+    <img src="/images/yoga.gif" alt="yoga"/>
+</div>
+
+<script>
+    function copyToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("formLink");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the link: " + copyText.value);
+    }
+</script>

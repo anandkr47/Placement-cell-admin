@@ -177,6 +177,9 @@ app.get('/react', (req, res) => {
 app.get('/development', (req, res) => {
   res.render('development.ejs', { title: 'Development Tasks' });
 });
+app.get('/refer', (req, res) => {
+  res.render('refer.ejs', { title: 'Refer Your Friends' });
+});
 
 app.listen(PORT || 5000, (err) => {
   if (err) {
