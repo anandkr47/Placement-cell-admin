@@ -14,13 +14,14 @@
         margin: 0;
         font-size: 2.5em;
         text-align: center;
-        color : rgb(22, 188, 230);
+        color: rgb(22, 188, 230);
     }
     .task {
         border: 2px solid #616364;
         border-radius: 10px;
         margin: 20px;
         padding: 20px;
+        background-color: #24292e;
     }
     .task h2 {
         font-size: 1.5em;
@@ -58,89 +59,110 @@
         padding: 10px;
         text-align: center;
     }
-    
+    .task-submission {
+        background-color: #24292e;
+        border-radius: 10px;
+        margin: 20px;
+        padding: 20px;
+    }
+    .task-submission h2 {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: whitesmoke;
+    }
+    .task-submission .form-label {
+        color: white;
+        font-weight: bold;
+    }
+    .task-submission .form-control {
+        background-color: #f5f5f5;
+    }
+    .task-submission .btn-primary {
+        background-color: #4992db;
+        border-color: #4992db;
+    }
+    .task-submission .btn-primary:hover {
+        background-color: #003366;
+        border-color: #003366;
+    }
 </style>
 <div class="header">
-    <h1>React Tasks</h1>
-    <img src="/images/react.gif" alt="react"/> 
+    <h1>Web Development Tasks</h1>
 </div>
 <div class="task">
     <h2>Task 1</h2>
-    <p>Create a calculator on React.</p>
+    <p>Create a Todo List.</p>
     <ul>
-        <li> The calculator should have all working functionality</li>
-        <li>implement good design</li>
-        <li>after completing the calculator project deploy it on github.</li>
-        <li>host it on netlify or some other</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
-         <li>Marks: 20/100.</li>
+        <li>Create it using HTML, CSS, and JavaScript</li>
+        <li>The web app should have all working functionality</li>
+        <li>Implement good designs using CSS</li>
+        <li>After completing the project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or some other hosting platform</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form</li>
+        <li>Marks: 20/100</li>
+        <li>Ideal time required: 1 day</li>
     </ul>
 </div>
 <div class="task">
     <h2>Task 2</h2>
-    <p>React Weather website.</p>
+    <p>Create an IMDB clone.</p>
     <ul>
-        <li>the Weather app should display the weather according to the searched location</li>
-        <li>the weather app should have a good design and animations </li>
-        <li>the weather app should have a good UI</li>
-        <li>use available api to fetch weather data according to the location(hint: use apis from Rapid API)</li>
-        <li>after completing the weather app project deploy it on github.</li>
-        <li>host it on netlify or some other hosting platform</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
+        <li>The clone should have minimal basic features of IMDB like login and signup, home page, searching movies, displaying all the movie details with rating, and also add to wishlist feature.</li>
+        <li>The web app should have a good design, and you can also give it your own touch</li>
+        <li>Use HTML, CSS, and JavaScript frameworks to make the clone, and for the database, you can use MongoDB</li>
+        <li>Use available APIs to fetch movie data according to the search bar (hint: use APIs from Rapid API)</li>
+        <li>After completing the project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or some other hosting platform</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form</li>
         <li>Marks: 30/100</li>
+        <li>Ideal Time Required: 3 days</li>
     </ul>
 </div>
 <div class="task">
     <h2>Task 3</h2>
     <p>Netflix Clone in React.</p>
     <ul>
-        <li>create a netfils clone the frontend should be in react and in Backend use FireBase</li>
-        <li>the netflix clone should have a good looking visuals, you can also give your own touch </li>
-        <li>Impliment only the basic functionality of netflix like home page, Search bar, sign-in page, sign-up page, browse page, and movie player page.</li>
-        <li>after completing the project deploy it on github.</li>
-        <li>host it on netlify or some other hosting platform</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
+        <li>Create a Netflix clone; the frontend should be in React, and for the backend, use Firebase</li>
+        <li>The Netflix clone should have visually appealing designs, and you can also give it your own touch</li>
+        <li>Implement only the basic functionality of Netflix like the home page, search bar, sign-in page, sign-up page, browse page, and movie player page</li>
+        <li>After completing the project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or some other hosting platform</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form</li>
         <li>Max Marks: 50/100</li>
-       
     </ul>
 </div>
 <div class="task-submission">
     <h2>Task Submission</h2>
     <form id="taskSubmissionForm" action="/submit-task" method="POST">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-      </div>
-      <div class="mb-3">
-        <label for="task" class="form-label">Task</label>
-        <select class="form-select" id="task" name="task" required>
-          <option value="">Select a task</option>
-          <option value="Task 1">Task 1 - Create a calculator on React</option>
-          <option value="Task 2">Task 2 - React Weather website</option>
-          <option value="Task 3">Task 3 - Netflix Clone on React</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="githubLink" class="form-label">GitHub Repository Link</label>
-        <input type="url" class="form-control" id="githubLink" name="githubLink" placeholder="Enter the GitHub repository link" required>
-      </div>
-      <div class="mb-3">
-        <label for="hostedLink" class="form-label">Hosted Website Link</label>
-        <input type="url" class="form-control" id="hostedLink" name="hostedLink" placeholder="Enter the hosted website link" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="task" class="form-label">Task</label>
+            <select class="form-select" id="task" name="task" required>
+                <option value="">Select a task</option>
+                <option value="Task 1">Task 1 - Create a To DO List</option>
+                <option value="Task 2">Task 2 - IMDB Clone</option>
+                <option value="Task 3">Task 3 - Netflix Clone on React</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="githubLink" class="form-label">GitHub Repository Link</label>
+            <input type="url" class="form-control" id="githubLink" name="githubLink" placeholder="Enter the GitHub repository link" required>
+        </div>
+        <div class="mb-3">
+            <label for="hostedLink" class="form-label">Hosted Website Link</label>
+            <input type="url" class="form-control" id="hostedLink" name="hostedLink" placeholder="Enter the hosted website link" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-  </div>
-  
-<div class="footer">
-© 2023 DSA Tasks. All rights reserved.
 </div>
-
-
-
-
-
+<div class="footer">
+    © 2023 Placement Cell. All rights reserved.
+</div>
