@@ -5,146 +5,208 @@
         margin: 0;
         padding: 0;
     }
+    
     .header {
         background-color: #24292e;
         color: white;
         padding: 20px;
-        position: relative;
+        text-align: center;
     }
+    
     .header h1 {
         margin: 0;
         font-size: 2.5em;
-        text-align: center;
         color: rgb(22, 188, 230);
     }
+    
     .header img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        display: block;
+        margin: 0 auto;
         width: 100px;
         height: 100px;
     }
+    
     .task {
         border: 2px solid #616364;
         border-radius: 10px;
         margin: 20px;
         padding: 20px;
+        background-color: #24292e;
     }
+    
     .task h2 {
         font-size: 1.5em;
         margin-top: 0;
         margin-bottom: 10px;
         color: whitesmoke;
     }
+    
     .task p {
         font-size: 1.2em;
         margin-top: 0;
         margin-bottom: 20px;
         color: white;
     }
+    
     .task ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
     }
+    
     .task li {
         font-size: 1.2em;
         margin-bottom: 10px;
         color: skyblue;
     }
+    
     .task a {
         color: #4992db;
         font-weight: bold;
         text-decoration: none;
     }
+    
     .task a:hover {
         color: #003366;
     }
+    
+    .task-submission {
+        margin: 20px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .task-submission h2 {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #333333;
+        text-align: center;
+    }
+    
+    .task-submission form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .form-label {
+        font-size: 1.2em;
+        color: #333333;
+        margin-bottom: 5px;
+    }
+    
+    .form-control {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #cccccc;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .btn-primary {
+        background-color: #4992db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+        background-color: #003366;
+    }
+    
     .footer {
         background-color: #24292e;
         color: white;
         padding: 10px;
         text-align: center;
     }
-    
 </style>
+
 <div class="header">
     <h1>React Tasks</h1>
     <img src="/images/react.gif" alt="react"/> 
 </div>
+
 <div class="task">
     <h2>Task 1</h2>
     <p>Create a calculator on React.</p>
     <ul>
-        <li> The calculator should have all working functionality</li>
-        <li>implement good design</li>
-        <li>after completing the calculator project deploy it on github.</li>
-        <li>host it on netlify or some other</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
-         <li>Marks: 20/100.</li>
+        <li>The calculator should have all working functionality.</li>
+        <li>Implement good design.</li>
+        <li>After completing the calculator project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or any other hosting platform.</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form.</li>
+        <li>Marks: 20/100.</li>
     </ul>
 </div>
+
 <div class="task">
     <h2>Task 2</h2>
     <p>React Weather website.</p>
     <ul>
-        <li>the Weather app should display the weather according to the searched location</li>
-        <li>the weather app should have a good design and animations </li>
-        <li>the weather app should have a good UI</li>
-        <li>use available api to fetch weather data according to the location(hint: use apis from Rapid API)</li>
-        <li>after completing the weather app project deploy it on github.</li>
-        <li>host it on netlify or some other hosting platform</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
+        <li>The Weather app should display the weather according to the searched location.</li>
+        <li>The Weather app should have a good design and animations.</li>
+        <li>The Weather app should have a good UI.</li>
+        <li>Use available APIs to fetch weather data according to the location (hint: use APIs from Rapid API).</li>
+        <li>After completing the Weather app project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or any other hosting platform.</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form.</li>
         <li>Marks: 30/100</li>
     </ul>
 </div>
+
 <div class="task">
     <h2>Task 3</h2>
     <p>Netflix Clone in React.</p>
     <ul>
-        <li>create a netfils clone the frontend should be in react and in Backend use FireBase</li>
-        <li>the netflix clone should have a good looking visuals, you can also give your own touch </li>
-        <li>Impliment only the basic functionality of netflix like home page, Search bar, sign-in page, sign-up page, browse page, and movie player page.</li>
-        <li>after completing the project deploy it on github.</li>
-        <li>host it on netlify or some other hosting platform</li>
-        <li>submit the link of the hosted website and github repository on the below submission form</li>
+        <li>Create a Netflix clone. The frontend should be in React, and the backend should use Firebase.</li>
+        <li>The Netflix clone should have visually appealing visuals; you can also add your own touch.</li>
+        <li>Implement only the basic functionality of Netflix, such as the home page, search bar, sign-in page, sign-up page, browse page, and movie player page.</li>
+        <li>After completing the project, deploy it on GitHub.</li>
+        <li>Host it on Netlify or any other hosting platform.</li>
+        <li>Submit the link of the hosted website and GitHub repository on the below submission form.</li>
         <li>Max Marks: 50/100</li>
-       
     </ul>
 </div>
+
 <div class="task-submission">
     <h2>Task Submission</h2>
     <form id="taskSubmissionForm" action="/submit-task" method="POST">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-      </div>
-      <div class="mb-3">
-        <label for="task" class="form-label">Task</label>
-        <select class="form-select" id="task" name="task" required>
-          <option value="">Select a task</option>
-          <option value="Task 1">Task 1 - Create a calculator on React</option>
-          <option value="Task 2">Task 2 - React Weather website</option>
-          <option value="Task 3">Task 3 - Netflix Clone on React</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="githubLink" class="form-label">GitHub Repository Link</label>
-        <input type="url" class="form-control" id="githubLink" name="githubLink" placeholder="Enter the GitHub repository link" required>
-      </div>
-      <div class="mb-3">
-        <label for="hostedLink" class="form-label">Hosted Website Link</label>
-        <input type="url" class="form-control" id="hostedLink" name="hostedLink" placeholder="Enter the hosted website link" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="task" class="form-label">Task</label>
+            <select class="form-select" id="task" name="task" required>
+                <option value="">Select a task</option>
+                <option value="Task 1">Task 1 - Create a calculator on React</option>
+                <option value="Task 2">Task 2 - React Weather website</option>
+                <option value="Task 3">Task 3 - Netflix Clone on React</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="githubLink" class="form-label">GitHub Repository Link</label>
+            <input type="url" class="form-control" id="githubLink" name="githubLink" placeholder="Enter the GitHub repository link" required>
+        </div>
+        <div class="mb-3">
+            <label for="hostedLink" class="form-label">Hosted Website Link</label>
+            <input type="url" class="form-control" id="hostedLink" name="hostedLink" placeholder="Enter the hosted website link" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-  
+
 <div class="footer">
     © 2023 Placement cell. All rights reserved.
 </div>

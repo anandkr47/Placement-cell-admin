@@ -41,6 +41,24 @@
     .copy-button:hover {
         background-color: #45a049;
     }
+    
+    .go-back-button {
+        background-color: #cccccc;
+        color: #333333;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .go-back-button:hover {
+        background-color: #b3b3b3;
+    }
 </style>
 <div class="container">
     <h1>Refer Your Friends</h1>
@@ -51,6 +69,7 @@
         <button onclick="copyToClipboard()">Copy Link</button>
     </div>
     <img src="/images/yoga.gif" alt="yoga"/>
+    <button class="go-back-button" onclick="goBack()">Go Back</button>
 </div>
 
 <script>
@@ -67,5 +86,9 @@
 
         /* Alert the copied text */
         alert("Copied the link: " + copyText.value);
+    }
+    
+    function goBack() {
+        window.history.back();
     }
 </script>
