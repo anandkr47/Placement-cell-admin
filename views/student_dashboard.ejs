@@ -113,10 +113,10 @@ td{
             <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/student_profile/<%= student.email %>">Profile</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#">My Interview</a>
+            <a class="nav-link" href="/student_interview/<%= student.email %>">My Interview</a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link" href="/refer">Refer</a>
@@ -140,7 +140,7 @@ td{
     <div class="col">
       <% if (student) { %>
       <div class="student-details">
-        <h3 class="welcome-text">Welcome, <%= student.name %></h3>
+        <h3 class="welcome-text">Welcome, <%= student.name %> Complete your Tasks To Increase your Score </h3>
         <table class="table student-table">
           <tbody>
             <tr>

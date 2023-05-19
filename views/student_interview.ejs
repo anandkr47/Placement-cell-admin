@@ -1,0 +1,14 @@
+<ul>
+    <% student.interviews.forEach((interview) => { %>
+      <% if (interview.company && interview.date && interview.result) { %>
+        <li class="interview-item">
+          <div class="interview-details">
+            <strong>Company:</strong> <%= interview.company %><br>
+            <strong>Date:</strong> <%= interview.date %><br>
+            <strong>Result:</strong> <%= interview.result %>
+          </div>
+        </li>
+      <% } %>
+    <% }); %>
+  </ul>
+  

@@ -181,6 +181,30 @@ app.get('/refer', (req, res) => {
   res.render('refer.ejs', { title: 'Refer Your Friends' });
 });
 
+app.get('/student_interview/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Assuming you have a Student model/schema defined
+    const student = await Student.findOne({ email });
+
+    if (!student) {
+      // Handle the case where the student is not found
+      return res.status(404).send('Student not found.');
+    }
+
+    res.render('student_interview.ejs', {
+      title: 'Student Interviews',
+      student: student, // Pass the student variable as a local variable
+    });
+  } catch (error) {
+    // Handle the error if any
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 app.listen(PORT || 5000, (err) => {
   if (err) {
     console.log(`Error in running the server: ${err}`);
