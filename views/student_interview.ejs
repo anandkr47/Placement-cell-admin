@@ -1,4 +1,30 @@
-<ul>
+<style>
+  h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .interview-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .interview-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  .interview-details {
+    font-size: 16px;
+  }
+</style>
+
+<h2>Assigned Interviews</h2>
+<% if (student.interviews.length > 0) { %>
+  <ul class="interview-list">
     <% student.interviews.forEach((interview) => { %>
       <% if (interview.company && interview.date && interview.result) { %>
         <li class="interview-item">
@@ -11,4 +37,6 @@
       <% } %>
     <% }); %>
   </ul>
-  
+<% } else { %>
+  <p>No interviews assigned yet.</p>
+<% } %>
