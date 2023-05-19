@@ -11,6 +11,15 @@
       padding: 20px;
     }
 
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     h1 {
       color: #333;
       font-size: 24px;
@@ -30,7 +39,7 @@
     }
 
     input[type="text"] {
-      width: 250px;
+      width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
@@ -54,12 +63,14 @@
   </style>
 </head>
 <body>
-  <h1>Email Verification</h1>
-  <p>Please enter the OTP sent to your email: <%= email %></p>
-  <form method="POST" action="/verify-email/<%= email %>">
-    <!-- Update the action attribute -->
-    <input type="text" name="otp" placeholder="Enter OTP">
-    <button type="submit">Verify</button>
-  </form>
+  <div class="container">
+    <h1>Email Verification</h1>
+    <p>Please enter the OTP sent to your email: <%= email %></p>
+    <form method="POST" action="/verify-email/<%= email %>">
+      <!-- Update the action attribute -->
+      <input type="text" name="otp" placeholder="Enter OTP">
+      <button type="submit">Verify</button>
+    </form>
+  </div>
 </body>
 </html>
