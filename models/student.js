@@ -46,9 +46,17 @@ const studentSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
+        time: {
+          type: String,
+          required: true,
+        },
+        link: {
+          type: String,
+          required: true,
+        },
         result: {
           type: String,
-          enum: ["PASS", "FAIL", "Didn't Attempt", "On Hold"],
+          enum: ["PASS", "FAIL", "Didn't Attempt", "On Hold","On Going"],
         },
       },
     ],
