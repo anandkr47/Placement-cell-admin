@@ -182,6 +182,7 @@ app.get('/development', (req, res) => {
 app.get('/refer', (req, res) => {
   res.render('refer.ejs', { title: 'Refer Your Friends' });
 });
+
 app.get('/post-jobs', (req, res) => {
   Job.find()
     .then(jobs => {
