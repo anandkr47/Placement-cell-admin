@@ -13,6 +13,7 @@ module.exports.addInterview = (req, res) => {
 };
 
 // Creation of a new interview
+// Creation of a new interview
 module.exports.create = async (req, res) => {
   try {
     const { company, date, time, link } = req.body;
@@ -21,6 +22,7 @@ module.exports.create = async (req, res) => {
       {
         company,
         date,
+        students: [],
         time,
         link,
       },
@@ -37,6 +39,7 @@ module.exports.create = async (req, res) => {
     console.log(err);
   }
 };
+
 
 // Enrolling a student in the interview
 module.exports.enrollInInterview = async (req, res) => {
