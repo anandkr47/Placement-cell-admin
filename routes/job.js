@@ -4,7 +4,7 @@ const Job = require("../models/job");
 
 // Render the job post page
 router.get("/create", (req, res) => {
-  res.render("post-jobs");
+    res.render("post-jobs", { job: {} });
 });
 
 // Create a new job post
