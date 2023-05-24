@@ -1,55 +1,57 @@
 <style>
-  h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
+  .interviews-container {
+    max-width: 600px;
+    margin: 20px auto;
   }
 
-  .interview-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .interview-item {
+  .interview-card {
     background-color: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
     border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .interview-company {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 
   .interview-details {
     font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
   }
 
   .join-interview-btn {
     background-color: #007bff;
     color: #fff;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border-radius: 3px;
     text-decoration: none;
     display: inline-block;
-    margin-top: 5px;
+    margin-top: 10px;
   }
 </style>
 
-<h2>Assigned Interviews</h2>
-<% if (student.interviews.length > 0) { %>
-  <ul class="interview-list">
+<div class="interviews-container">
+  <h2>Assigned Interviews</h2>
+
+  <% if (student.interviews.length > 0) { %>
     <% student.interviews.forEach((interview) => { %>
       <% if (interview.company && interview.date && interview.result) { %>
-        <li class="interview-item">
+        <div class="interview-card">
+          <div class="interview-company"><%= interview.company %></div>
           <div class="interview-details">
-            <strong>Company:</strong> <%= interview.company %><br>
             <strong>Date:</strong> <%= interview.date %><br>
             <strong>Time:</strong> <%= interview.time %><br>
-            <strong>Link:</strong> <%= interview.link %><br>
             <strong>Result:</strong> <%= interview.result %><br>
-            <a href="<%= interview.link %>" class="join-interview-btn">Join Interview</a>
           </div>
-        </li>
+          <a href="<%= interview.link %>" class="join-interview-btn">Join Interview</a>
+        </div>
       <% } %>
     <% }); %>
-  </ul>
-<% } else { %>
-  <p>No interviews assigned yet.</p>
-<% } %>
+  <% } else { %>
+    <p>No interviews assigned yet.</p>
+  <% } %>
+</div>
