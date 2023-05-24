@@ -3,12 +3,12 @@ const router = express.Router();
 const Job = require("../models/job");
 
 // Render the job post page
-router.get("/create", (req, res) => {
+router.get("/job/create", (req, res) => {
     res.render("post-jobs", { job: {} });
 });
 
 // Create a new job post
-router.post("/create", (req, res) => {
+router.post("/job/create", (req, res) => {
   const { title, company, location, description, requirements, contact, deadline } = req.body;
 
   const job = new Job({
@@ -34,12 +34,12 @@ router.post("/create", (req, res) => {
 });
 
 // Render the job edit page
-router.get("/:id/edit", (req, res) => {
+router.get("/job/:id/edit", (req, res) => {
   const jobId = req.params.id;
 
   Job.findById(jobId)
     .then((job) => {
-      res.render("job_edit", { job });
+      res.render("job_edit", { title:"edit job", job });
     })
     .catch((err) => {
       console.error("Error retrieving job", err);
@@ -49,7 +49,7 @@ router.get("/:id/edit", (req, res) => {
 });
 
 // Update a job post
-router.post("/:id/update", (req, res) => {
+router.post("/job/:id/update", (req, res) => {
   const jobId = req.params.id;
   const { title, company, location, description, requirements, contact, deadline } = req.body;
 
@@ -74,7 +74,7 @@ router.post("/:id/update", (req, res) => {
 });
 
 // Delete a job post
-router.post("/:id/delete", (req, res) => {
+router.post("/job/:id/delete", (req, res) => {
   const jobId = req.params.id;
 
   Job.findByIdAndDelete(jobId)
