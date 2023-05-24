@@ -181,8 +181,17 @@ app.get('/refer', (req, res) => {
   res.render('refer.ejs', { title: 'Refer Your Friends' });
 });
 app.get('/post-jobs', (req, res) => {
-  res.render('post-jobs.ejs', { title: 'Post jobs' });
+  Job.find()
+    .then(jobs => {
+      res.render('post-jobs', { title: 'Post jobs', jobs });
+    })
+    .catch(error => {
+      console.error('Error retrieving jobs', error);
+      req.flash('error', 'Failed to retrieve jobs');
+      res.redirect('/');
+    });
 });
+
 app.get('/student_interview/:email', async (req, res) => {
   try {
     const { email } = req.params;
