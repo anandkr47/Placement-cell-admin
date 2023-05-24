@@ -5,6 +5,7 @@ const router = express.Router();
 const Job = require("../models/job");
 
 // Render the job post page
+
 router.get("/create", (req, res) => {
   res.render("post-jobs");
 });
