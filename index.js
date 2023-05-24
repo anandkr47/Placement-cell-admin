@@ -14,6 +14,7 @@ const { authenticator } = require('otplib');
 const emailRoutes = require('./routes/emailRoutes');
 const taskemailRoutes = require('./routes/taskemailRoutes');
 const dsataskRoutes=require('./routes/dsataskRoutes');
+const job=require('./routes/job');
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -71,6 +72,7 @@ app.use("/", require("./routes"));
 app.use('/', emailRoutes);
 app.use('/',taskemailRoutes);
 app.use('/',dsataskRoutes);
+app.use('/',job);
 
 
 app.get('/student_dashboard/:email', async (req, res) => {
