@@ -20,6 +20,16 @@
   .interview-details {
     font-size: 16px;
   }
+
+  .join-interview-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+  }
 </style>
 
 <h2>Assigned Interviews</h2>
@@ -33,7 +43,8 @@
             <strong>Date:</strong> <%= interview.date %><br>
             <strong>Time:</strong> <%= interview.time %><br>
             <strong>Link:</strong> <%= interview.link %><br>
-            <strong>Result:</strong> <%= interview.result %>
+            <strong>Result:</strong> <%= interview.result %><br>
+            <a href="<%= interview.link %>" class="join-interview-btn">Join Interview</a>
           </div>
         </li>
       <% } %>
