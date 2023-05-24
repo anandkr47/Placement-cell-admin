@@ -180,7 +180,9 @@ app.get('/development', (req, res) => {
 app.get('/refer', (req, res) => {
   res.render('refer.ejs', { title: 'Refer Your Friends' });
 });
-
+app.get('/job-post', (req, res) => {
+  res.render('job-post.ejs', { title: 'Post jobs' });
+});
 app.get('/student_interview/:email', async (req, res) => {
   try {
     const { email } = req.params;
