@@ -183,7 +183,7 @@ app.get('/refer', (req, res) => {
 app.get('/post-jobs', (req, res) => {
   Job.find()
     .then(jobs => {
-      res.render('post-jobs', { title: 'Post jobs', jobs });
+      res.render('post-jobs.ejs', { title: 'Post jobs', jobs });
     })
     .catch(error => {
       console.error('Error retrieving jobs', error);
