@@ -1,7 +1,7 @@
 const Interview = require("../models/interview");
 const Student = require("../models/student");
 
-// renders the addInterview page
+// Renders the addInterview page
 module.exports.addInterview = (req, res) => {
   if (req.isAuthenticated()) {
     return res.render("add_interview", {
@@ -12,22 +12,24 @@ module.exports.addInterview = (req, res) => {
   return res.redirect("/");
 };
 
-// Creation of new interview
+// Creation of a new interview
 module.exports.create = async (req, res) => {
   try {
-    const { company, date } = req.body;
+    const { company, date, time, link } = req.body;
 
     await Interview.create(
       {
         company,
         date,
+        time,
+        link,
       },
-      (err, Interview) => {
+      (err, interview) => {
         if (err) {
-          req.flash("error", "Couldn't add Interview!");
+          req.flash("error", "Couldn't add the interview!");
           return res.redirect("back");
         }
-        req.flash("success", "Interview added!");
+        req.flash("success", "Interview added successfully!");
         return res.redirect("back");
       }
     );
@@ -36,46 +38,50 @@ module.exports.create = async (req, res) => {
   }
 };
 
-// Enrolling student in the interview
+// Enrolling a student in the interview
 module.exports.enrollInInterview = async (req, res) => {
   try {
-    let interview = await Interview.findById(req.params.id);
+    const interview = await Interview.findById(req.params.id);
     const { email, result } = req.body;
 
     if (interview) {
-      let student = await Student.findOne({ email: email });
+      const student = await Student.findOne({ email });
+
       if (student) {
-        // check if already enrolled
-        let alreadyEnrolled = await Interview.findOne({
+        // Check if already enrolled
+        const alreadyEnrolled = await Interview.findOne({
+          _id: { $ne: interview._id },
           "students.student": student.id,
         });
 
-        // preventing student from enrolling in same company more than once
+        // Preventing student from enrolling in the same company more than once
         if (alreadyEnrolled) {
           if (alreadyEnrolled.company === interview.company) {
             req.flash(
               "error",
-              `${student.name} already enrolled in ${interview.company} interview!`
+              `${student.name} is already enrolled in an interview with ${interview.company}!`
             );
             return res.redirect("back");
           }
         }
 
-        let studentObj = {
+        const studentObj = {
           student: student.id,
-          result: result,
+          result,
         };
 
-        // updating students field of interview by putting reference of newly enrolled student
+        // Update students field of the interview by adding the reference of the newly enrolled student
         await interview.updateOne({
           $push: { students: studentObj },
         });
 
-        // updating interview of student
-        let assignedInterview = {
+        // Update the student's interviews field with the assigned interview details
+        const assignedInterview = {
           company: interview.company,
           date: interview.date,
-          result: result,
+          time: interview.time,
+          link: interview.link,
+          result,
         };
         await student.updateOne({
           $push: { interviews: assignedInterview },
@@ -83,36 +89,38 @@ module.exports.enrollInInterview = async (req, res) => {
 
         req.flash(
           "success",
-          `${student.name} enrolled in ${interview.company} interview!`
+          `${student.name} enrolled in an interview with ${interview.company}!`
         );
         return res.redirect("back");
       }
+
       req.flash("error", "Student not found!");
       return res.redirect("back");
     }
+
     req.flash("error", "Interview not found!");
     return res.redirect("back");
   } catch (err) {
-    req.flash("error", "Error in enrolling interview!");
+    req.flash("error", "Error in enrolling for the interview!");
   }
 };
 
-// deallocating students from an interview
+// Deallocating a student from an interview
 module.exports.deallocate = async (req, res) => {
   try {
     const { studentId, interviewId } = req.params;
 
-    // find the interview
+    // Find the interview
     const interview = await Interview.findById(interviewId);
 
     if (interview) {
-      // remove reference of student from interview schema
+      // Remove the reference of the student from the interview schema
       await Interview.findOneAndUpdate(
         { _id: interviewId },
         { $pull: { students: { student: studentId } } }
       );
 
-      // remove interview from student's schema using interview's company
+      // Remove the interview from the student's schema using the interview's company
       await Student.findOneAndUpdate(
         { _id: studentId },
         { $pull: { interviews: { company: interview.company } } }
@@ -120,14 +128,14 @@ module.exports.deallocate = async (req, res) => {
 
       req.flash(
         "success",
-        `Successfully deallocated from ${interview.company} interview!`
+        `Successfully deallocated from the interview with ${interview.company}!`
       );
       return res.redirect("back");
     }
 
-    req.flash("error", "Interview not found");
+    req.flash("error", "Interview not found!");
     return res.redirect("back");
   } catch (err) {
-    req.flash("error", "Couldn't deallocate from interview");
+    req.flash("error", "Couldn't deallocate from the interview!");
   }
 };

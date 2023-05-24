@@ -1,10 +1,9 @@
-<% if (locals.user) {%>
-    <div class="container mt-4 col-md-4">
-    <h4>Add an interview </h4>
-  
-    <form class="row g-3 mt-1 border border-dark rounded p-2" 
-     style="--bs-border-opacity: 0.5" action="/interview/create" method="POST">
-  
+<% if (locals.user) { %>
+  <div class="container mt-4 col-md-4">
+    <h4>Add an interview</h4>
+
+    <form class="row g-3 mt-1 border border-dark rounded p-2" style="--bs-border-opacity: 0.5" action="/interview/create" method="POST">
+
       <div class="col-12">
         <label for="company" class="form-label">Company</label>
         <input
@@ -16,7 +15,7 @@
           required
         />
       </div>
-  
+
       <div class="col-12">
         <label for="date" class="form-label">Date</label>
         <input
@@ -28,15 +27,35 @@
           required
         />
       </div>
-  
-          
-      <div class="col-12 ">
+
+      <div class="col-12">
+        <label for="time" class="form-label">Time</label>
+        <input
+          type="time"
+          class="form-control"
+          placeholder="Enter interview time"
+          id="time"
+          name="time"
+          required
+        />
+      </div>
+
+      <div class="col-12">
+        <label for="link" class="form-label">Interview Link</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter online interview joining link"
+          id="link"
+          name="link"
+          required
+        />
+      </div>
+
+      <div class="col-12">
         <button type="submit" class="btn btn-primary">Add interview</button>
       </div>
-  
+
     </form>
   </div>
-  </div>
-  
-  <%} %>
-  
+<% } %>
