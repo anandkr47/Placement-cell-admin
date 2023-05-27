@@ -2,17 +2,6 @@ const Profile = require('../models/profile');
 const multer = require('multer');
 
 // Create a multer storage instance
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Set the destination folder for uploaded files
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Set the file name for uploaded files
-  }
-});
-
-// Create a multer upload instance
-const upload = multer({ storage: storage });
 
 // Create a new profile
 exports.createProfile = async (req, res) => {
