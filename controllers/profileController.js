@@ -6,9 +6,13 @@ exports.createProfile = async (req, res) => {
     const { about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
     const { resume } = req.files;
 
+    if (!resume) {
+      return res.status(400).json({ error: 'No resume file found in the request.' });
+    }
+
     // Create a new profile document
     const newProfile = new Profile({
-        students: [],
+      students: [],
       about,
       mobile,
       github,
@@ -51,6 +55,7 @@ exports.editProfile = async (req, res) => {
     profile.leetcode = leetcode;
 
     if (resume) {
+      // Update the resume in the profile
       profile.resume = {
         data: resume.data,
         contentType: resume.mimetype,
