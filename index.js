@@ -11,6 +11,7 @@ const expressLayouts = require("express-ejs-layouts");
 const fetch = require('cross-fetch');
 const Student = require("./models/student");
 const Job = require("./models/job");
+const profile = require("./models/profile");
 const { authenticator } = require('otplib');
 const emailRoutes = require('./routes/emailRoutes');
 const taskemailRoutes = require('./routes/taskemailRoutes');
