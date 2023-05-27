@@ -240,6 +240,7 @@ app.get('/student_profile/:email', async (req, res) => {
 
     res.render('student_profile.ejs', {
       title: 'Student profile',
+      student: student, // Pass the student variable as a local variable
       profile: profile, // Pass the student variable as a local variable
     });
   } catch (error) {
