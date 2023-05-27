@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css" />
+
+<header>
+  <nav class="navbar navbar-expand-lg" style="background-color: wheat">
+    <div class="container-fluid">
+      <a class="navbar-brand h1" href="#">
+        <i class="fas fa-laptop-code"></i> Placement Cell
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+        <ul class="nav text-purple">
+          <li class="nav-item mx-2">
+            <a class="nav-link text-purple" href="/student_dashboard/<%= student.email %>">Dashboard</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/student_profile/<%= student.email %>">Profile</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/student_interview/<%= student.email %>">My Interview</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/refer">Refer</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/job-portal">Job Portal</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="https://online-compilerby-anand.netlify.app/">Code Here</a>
+          </li>
+        </ul>
+        <h3><%= student.name %></h3>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <% if (!student.profile) { %>
+    <section class="profile-section">
+        <div class="container">
+          <div class="text-center">
+            <h2>Create Your Profile</h2>
+            <p>Complete your profile to enhance your placement opportunities.</p>
+            
+            <form action="/create_profile" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="about">About:</label>
+                <textarea class="form-control" id="about" name="about" rows="4" required></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="github">GitHub URL:</label>
+                <input type="url" class="form-control" id="github" name="github" placeholder="Enter your GitHub URL" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="linkedin">LinkedIn URL:</label>
+                <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn URL" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="hackerrank">HackerRank Profile:</label>
+                <input type="url" class="form-control" id="hackerrank" name="hackerrank" placeholder="Enter your HackerRank profile URL" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="leetcode">LeetCode Profile:</label>
+                <input type="url" class="form-control" id="leetcode" name="leetcode" placeholder="Enter your LeetCode profile URL" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="resume">Upload your Resume:</label>
+                <input type="file" class="form-control" id="resume" name="resume" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      
+  <% } else { %>
+    <section class="profile-section">
+      <div class="container">
+        <div class="text-center">
+          <h2>Your Profile</h2>
+          <div>
+            <!-- Display the student profile details here -->
+            <p>Name: <%= student.name %></p>
+            <p>Email: <%= student.email %></p>
+            <p>College: <%= student.college %></p>
+            <p>About:<%=profile.about</p>
+            <!-- Add more profile details as needed -->
+          </div>
+          <a href="/edit_profile" class="btn btn-secondary">Edit Profile</a>
+        </div>
+      </div>
+    </section>
+  <% } %>
+</main>

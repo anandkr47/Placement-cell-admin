@@ -16,6 +16,7 @@ const emailRoutes = require('./routes/emailRoutes');
 const taskemailRoutes = require('./routes/taskemailRoutes');
 const dsataskRoutes=require('./routes/dsataskRoutes');
 const job=require('./routes/job');
+const profileRouter=require('./routes/profileRouter');
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -74,6 +75,7 @@ app.use('/', emailRoutes);
 app.use('/',taskemailRoutes);
 app.use('/',dsataskRoutes);
 app.use('/',job);
+app.use('/',profileRouter);
 
 
 app.get('/student_dashboard/:email', async (req, res) => {
@@ -215,6 +217,28 @@ app.get('/student_interview/:email', async (req, res) => {
 
     res.render('student_interview.ejs', {
       title: 'Student Interviews',
+      student: student, // Pass the student variable as a local variable
+    });
+  } catch (error) {
+    // Handle the error if any
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+app.get('/student_profile/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Assuming you have a Student model/schema defined
+    const student = await Student.findOne({ email });
+
+    if (!student) {
+      // Handle the case where the student is not found
+      return res.status(404).send('Student not found.');
+    }
+
+    res.render('student_profile.ejs', {
+      title: 'Student profile',
       student: student, // Pass the student variable as a local variable
     });
   } catch (error) {
