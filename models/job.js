@@ -20,7 +20,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   requirements: {
-    type: String,
+    type: Number,
     required: true,
   },
   contact: {
@@ -29,6 +29,10 @@ const jobSchema = new mongoose.Schema({
   },
   deadline: {
     type: Date,
+    required: true,
+  },
+  applylink: {
+    type: String,
     required: true,
   },
 });

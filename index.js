@@ -136,7 +136,12 @@ app.post('/verify-email/:email', (req, res) => {
 
 app.get('/job-portal', (req, res) => {
   // Render the EJS template for the job search page
-  res.render('job-search.ejs', { title: 'Job Search', jobs: [] });
+  Job.find()
+  .then(postedjobs => {
+    res.render('job-search.ejs', { title: 'Job Search', jobs: [],postedjobs });
+  })
+
+  
 });
 
 // Define the route for handling the job search

@@ -9,7 +9,7 @@ router.get("/job/create", (req, res) => {
 
 // Create a new job post
 router.post("/job/create", (req, res) => {
-  const { title, company, location, description, requirements, contact, deadline } = req.body;
+  const { title, company, location, description, requirements, contact, deadline, applylink} = req.body;
 
   const job = new Job({
     title,
@@ -19,6 +19,8 @@ router.post("/job/create", (req, res) => {
     requirements,
     contact,
     deadline,
+    applylink,
+
   });
 
   job.save()
@@ -51,7 +53,7 @@ router.get("/job/:id/edit", (req, res) => {
 // Update a job post
 router.post("/job/:id/update", (req, res) => {
   const jobId = req.params.id;
-  const { title, company, location, description, requirements, contact, deadline } = req.body;
+  const { title, company, location, description, requirements, contact, deadline,applylink } = req.body;
 
   Job.findByIdAndUpdate(jobId, {
     title,
@@ -61,6 +63,7 @@ router.post("/job/:id/update", (req, res) => {
     requirements,
     contact,
     deadline,
+    applylink,
   })
     .then(() => {
       req.flash("success", "Job updated successfully!");

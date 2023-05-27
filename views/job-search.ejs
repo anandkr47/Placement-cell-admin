@@ -1,6 +1,85 @@
+<style>
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.job-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.job-card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.job-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.job-company,
+.job-location,
+.job-description,
+.job-requirement,
+.job-contact,
+.job-deadline {
+  margin-bottom: 5px;
+}
+
+.actions .btn {
+  margin-right: 5px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.no-jobs {
+  margin-top: 20px;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.no-jobs p {
+  font-size: 16px;
+  color: #999;
+}
+h2{
+  color: slateblue;
+}
+h1{
+  color: whitesmoke;
+}
+
+
+</style>
 <div class="container mt-4">
   <div class="col-md-6 offset-md-3">
-    <h1 class="text-center mb-4">Job Search</h1>
+    <h1 class="text-center mb-4">Search jobs all over the india </h1>
     
     <form action="/search" method="GET">
       <div class="form-group">
@@ -30,3 +109,31 @@
     <% } %>
   </div>
 </div>
+<% if (postedjobs.length > 0) { %>
+  <div class="job-listing">
+    <h2 class="section-title">Placement Cell Posted Jobs</h2>
+    <div class="job-cards">
+      <% postedjobs.forEach((job) => { %>
+        <div class="job-card">
+          <h3 class="job-title"><%= job.title %></h3>
+          <p class="job-company"><strong>Company:</strong> <%= job.company %></p>
+          <p class="job-location"><strong>Location:</strong> <%= job.location %></p>
+          <p class="job-description"><strong>Description:</strong> <%= job.description %></p>
+          <p class="job-requirement"><strong>Requirements:</strong> <%= job.requirements %></p>
+          <p class="job-contact"><strong>Contact:</strong> <%= job.contact %></p>
+          <p class="job-deadline"><strong>Deadline:</strong> <%= job.deadline %></p>
+          <div class="actions">
+            <a href="<%= job.applylink %>" class="btn btn-primary">Apply</a>
+            <button class="btn btn-secondary">Bookmark</button>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+<% } else { %>
+  <div class="no-jobs">
+    <p>No jobs posted yet.</p>
+  </div>
+<% } %>
+
+
