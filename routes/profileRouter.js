@@ -4,9 +4,8 @@ const newLocal = "../controllers/profileController";
 const profileController = require(newLocal);
 
 // Create a new profile
-router.post('/create_profile', profileController.createProfile);
+router.post('/create_profile', upload.single('resume'), profileController.createProfile);
+router.put('/profile/:id', upload.single('resume'), profileController.editProfile);
 
-// Edit an existing profile
-router.post('/edit_profile/:id', profileController.editProfile);
 
 module.exports = router;

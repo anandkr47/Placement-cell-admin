@@ -1,12 +1,26 @@
 const Profile = require('../models/profile');
+const multer = require('multer');
+
+// Create a multer storage instance
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Set the destination folder for uploaded files
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname); // Set the file name for uploaded files
+  }
+});
+
+// Create a multer upload instance
+const upload = multer({ storage: storage });
 
 // Create a new profile
 exports.createProfile = async (req, res) => {
   try {
     const { about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
-    const { resume } = req.files;
 
-    if (!resume) {
+    // Check if resume file is uploaded
+    if (!req.file) {
       return res.status(400).json({ error: 'No resume file found in the request.' });
     }
 
@@ -20,8 +34,8 @@ exports.createProfile = async (req, res) => {
       hackerrank,
       leetcode,
       resume: {
-        data: resume.data,
-        contentType: resume.mimetype,
+        data: req.file.path,
+        contentType: req.file.mimetype,
       },
     });
 
@@ -39,8 +53,6 @@ exports.createProfile = async (req, res) => {
 exports.editProfile = async (req, res) => {
   try {
     const { about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
-    const { resume } = req.files;
-
     const profileId = req.params.id;
 
     // Find the profile by ID
@@ -54,11 +66,12 @@ exports.editProfile = async (req, res) => {
     profile.hackerrank = hackerrank;
     profile.leetcode = leetcode;
 
-    if (resume) {
+    // Check if resume file is uploaded
+    if (req.file) {
       // Update the resume in the profile
       profile.resume = {
-        data: resume.data,
-        contentType: resume.mimetype,
+        data: req.file.path,
+        contentType: req.file.mimetype,
       };
     }
 
