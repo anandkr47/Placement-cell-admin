@@ -104,23 +104,26 @@ module.exports.enrollInInterview = async (req, res) => {
           <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
         `;*/
         const emailContent = `
-          <h3>Welcome to the Placement Cell!</h3>
-          <p>Dear ${student.name},</p>
-          <p>Congratulations on joining our vibrant community of aspiring professionals!</p>
-          <p>We're pleased to inform you that you are enrolled in the mock interview of' ${interview.company}</p>
-          
-          <p>Interview Date: ${interview.date}</p>
-          <p>Interview Time: ${interview.time}</p>
-          <div style="text-align: center; margin-top: 20px;">
-            <a href="${interviewLink}" style="background-color: #ff5f5f; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Portal Now</a>
-          </div>
-          
-          <p>Discover a world of opportunities, connect with industry professionals, and showcase your skills to top employers.</p>
-          <p>We're here to support you every step of the way, providing valuable resources, interview preparation tips, and personalized guidance.</p>
-          <p>Get ready to unlock your true potential and embark on an exciting career journey!</p>
-    
-          <p>Best regards,</p>
-          <p>The Placement Cell Team</p>
+        <h3>Congratulation!</h3>
+        <p>Dear ${student.name},</p>
+        
+        <p>We're thrilled to inform you that you have been selected for an exclusive mock interview opportunity with <strong>${interview.company}</strong>.</p>
+        
+        <p><strong>Interview Date: ${interview.date}</strong></p>
+        <p><strong>Interview Time: ${interview.time}</strong></p>
+        <p><strong>Be on time </strong></p>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="${interviewLink}" style="background-color: #ff5f5f; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Interview Portal Now</a>
+        </div>
+        
+        <p>Prepare to showcase your skills and seize this golden chance to impress top employers!</p>
+        <p>Unlock a world of opportunities, connect with industry experts, and ignite your career growth.</p>
+        <p>We'll be by your side, providing valuable resources, personalized guidance, and interview preparation tips.</p>
+        <p>Get ready to unleash your potential and embark on an exhilarating journey towards success!</p>
+        
+        <p>Best regards,</p>
+        <p>The Placement Cell Team</p>
+        
         `;
     
     
