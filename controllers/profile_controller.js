@@ -34,6 +34,7 @@ exports.createProfile = async (req, res) => {
 
     res.status(201).json(savedProfile);
   } catch (error) {
+    console.log(error);
     console.error(error);
     res.status(500).json({ error: 'An error occurred while creating the profile.' });
   }
