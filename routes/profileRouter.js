@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const path = require('path'); // Add the path module
 const profileController = require('../controllers/profile_controller');
 
 // Configure Multer storage
@@ -23,5 +24,12 @@ router.post('/create_profile', upload.single('resume'), profileController.create
 
 // Edit an existing profile
 router.put('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
+
+// Serve uploaded files
+router.get('/uploads/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, '../uploads/', filename);
+  res.sendFile(filePath);
+});
 
 module.exports = router;
