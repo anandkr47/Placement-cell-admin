@@ -34,7 +34,7 @@ exports.createProfile = async (req, res) => {
     req.flash("success", "profile added successfully!");
         return res.redirect("back");
 
-    res.status(201).json(savedProfile);
+   // res.status(201).json(savedProfile);
   } catch (error) {
     console.log(error);
     console.error(error);
@@ -71,8 +71,9 @@ exports.editProfile = async (req, res) => {
 
     // Save the updated profile to the database
     const updatedProfile = await profile.save();
-
-    res.json(updatedProfile);
+   req.flash("success", "profile added successfully!");
+    return res.redirect("back");
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while editing the profile.' });

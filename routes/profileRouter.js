@@ -28,11 +28,12 @@ router.post('/create_profile', upload.single('resume'), profileController.create
 router.post('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
 
 // Serve uploaded files
-router.get('/uploads/:filename', (req, res) => {
+router.get('student_profile/uploads/:filename', (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(__dirname, '../uploads/', filename);
   res.sendFile(filePath);
 });
+
 router.get('/edit_profile/:id', (req, res) => {
   // Add your logic here to render the edit profile page
   // For example:
