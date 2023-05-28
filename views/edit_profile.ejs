@@ -1,44 +1,45 @@
 <section class="profile-section">
-    <div class="container">
-      <div class="text-center">
-        <h2>Edit Profile</h2>
-        <form action="/edit_profile/<%= profile._id %>" method="POST" enctype="multipart/form-data">
-            
-            <div class="form-group">
-                <label for="about">About:</label>
-                <textarea class="form-control" id="about" name="about" rows="4" required></textarea>
-              </div>
-              
-              <div class="form-group">
-                <label for="mobile">Mobile Number:</label>
-                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="github">GitHub URL:</label>
-                <input type="url" class="form-control" id="github" name="github" placeholder="Enter your GitHub URL" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="linkedin">LinkedIn URL:</label>
-                <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn URL" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="hackerrank">HackerRank Profile:</label>
-                <input type="url" class="form-control" id="hackerrank" name="hackerrank" placeholder="Enter your HackerRank profile URL" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="leetcode">LeetCode Profile:</label>
-                <input type="url" class="form-control" id="leetcode" name="leetcode" placeholder="Enter your LeetCode profile URL" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="resume">Upload your Resume:</label>
-                <input type="url" class="form-control" id="resume" name="resume"placeholder="Enter your uploaded Resume URL" required>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
-      </div>
+  <div class="container">
+    <div class="text-center">
+      <h2>Edit Profile</h2>
+      <form action="/edit_profile/<%= profile._id %>" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="about">About:</label>
+          <textarea class="form-control" id="about" name="about" rows="4" required><%= profile.about %></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="mobile">Mobile Number:</label>
+          <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" value="<%= profile.mobile %>" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="github">GitHub URL:</label>
+          <input type="url" class="form-control" id="github" name="github" placeholder="Enter your GitHub URL" value="<%= profile.github %>" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="linkedin">LinkedIn URL:</label>
+          <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn URL" value="<%= profile.linkedin %>" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="hackerrank">HackerRank Profile:</label>
+          <input type="url" class="form-control" id="hackerrank" name="hackerrank" placeholder="Enter your HackerRank profile URL" value="<%= profile.hackerrank %>" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="leetcode">LeetCode Profile:</label>
+          <input type="url" class="form-control" id="leetcode" name="leetcode" placeholder="Enter your LeetCode profile URL" value="<%= profile.leetcode %>" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="resume">Upload your Resume:</label>
+          <input type="file" class="form-control-file" id="resume" name="resume" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const profileSchema = new mongoose.Schema({
-  
   email: {
     type: String,
     required: true,
@@ -31,10 +30,19 @@ const profileSchema = new mongoose.Schema({
     required: true,
   },
   resume: {
-    type: String,
-    required: true,
+    data: {
+      type: Buffer,
+      required: true,
+    },
+    fileName: {
+      type: String,
+      required: true,
+    },
+    fileType: {
+      type: String,
+      required: true,
+    },
   },
-  
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
