@@ -168,7 +168,7 @@ td{
               <td><%= student.dsa_score %></td>
               <td>
                 <a href="/dsa" class="btn btn-primary">Task</a>
-                <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" target="_blank" class="btn btn-primary">Practice DSA</a>
+                <a href="https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions&utm_source=geeksforgeeks&utm_medium=main_header&utm_campaign=practice_header" target="_blank" class="btn btn-primary">Practice</a>
               </td>
             </tr>
             <tr>
@@ -176,7 +176,7 @@ td{
               <td><%= student.webdev_score %></td>
               <td>
                 <a href="/development" class="btn btn-primary">Task</a>
-                <a href="https://www.freecodecamp.org/news/tag/web-development/" target="_blank" class="btn btn-primary">Practice Web Development</a>
+                <a href="https://www.freecodecamp.org/news/tag/web-development/" target="_blank" class="btn btn-primary">Practice</a>
               </td>
             </tr>
             <tr>
@@ -184,7 +184,7 @@ td{
               <td><%= student.react_score %></td>
               <td>
                 <a href="/react" class="btn btn-primary">Task</a>
-                <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" target="_blank" class="btn btn-primary">Practice React</a>
+                <a href="https://www.freecodecamp.org/learn/front-end-development-libraries/" target="_blank" class="btn btn-primary">Practice</a>
               </td>
             </tr>
           </tbody>
@@ -317,14 +317,8 @@ td{
           <div class="col-md-6">
             <h3>Submit a Query</h3>
             <form id="myForm" action="/submit-query" method="POST">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-              </div>
+              <input type="hidden" name="email" value="<%= student.name %>">
+              <input type="hidden" name="email" value="<%= student.email %>">
               <div class="mb-3">
                 <label for="message" class="form-label">Message</label>
                 <textarea class="form-control" id="message" name="message" rows="3" placeholder="Enter your query" required></textarea>
