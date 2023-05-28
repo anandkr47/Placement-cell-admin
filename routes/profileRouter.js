@@ -30,8 +30,8 @@ router.post('/edit_profile/:id', upload.single('resume'), profileController.edit
 // Serve uploaded files
 router.get('student_profile/uploads/:filename', (req, res) => {
   const { filename } = req.params;
-  const filePath = path.join(__dirname, '../uploads/', filename);
-  res.sendFile(filePath);
+  const filePath = path.join(__dirname, '..', 'uploads', filename);
+res.sendFile(filePath);
 });
 
 router.get('/edit_profile/:id', (req, res) => {
