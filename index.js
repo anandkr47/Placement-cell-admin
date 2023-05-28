@@ -250,6 +250,28 @@ app.get('/student_profile/:email', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+// Add a new route to handle resume file retrieval
+
+app.get('/resumes/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+
+    // Find the profile in MongoDB based on the resume filename or file ID
+    const profile = await Profile.findOne({ resumeFilename: filename });
+
+    // If the profile or resume is not found, return an error response
+    if (!profile) {
+      return res.status(404).json({ error: 'Resume not found.' });
+    }
+
+    // Retrieve the resume file from MongoDB and send it as a response
+    res.set('Content-Type', profile.resume.contentType);
+    res.sendFile(profile.resume.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while retrieving the resume.' });
+  }
+});
 
 
 app.listen(PORT || 5000, (err) => {
