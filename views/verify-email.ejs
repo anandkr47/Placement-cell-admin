@@ -65,10 +65,10 @@
 <body>
   <div class="container">
     <h1>Email Verification</h1>
-    <p>Please enter the OTP sent to your email: <%= email %></p>
+    <p>Please enter the Pass Code sent to your email: <%= email %></p>
     <form method="POST" action="/verify-email/<%= email %>">
       <!-- Update the action attribute -->
-      <input type="text" name="otp" placeholder="Enter OTP">
+      <input type="text" name="otp" placeholder="Enter Pass Code">
       <button type="submit">Verify</button>
     </form>
   </div>

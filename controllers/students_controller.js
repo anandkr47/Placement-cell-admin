@@ -71,14 +71,35 @@ module.exports.create = async (req, res) => {
 
 
     const emailSubject = 'Placement Cell Joining Link';
-    const emailContent = `
+   /* const emailContent = `
       <h3>Placement Cell Joining Link</h3>
       <p>Dear ${newStudent.name},</p>
-      <p>Please use the following OTP to verify your email:</p>
+      <p>Please use the following Pass Code to verify your email:</p>
       <p><strong>${otp}</strong></p>
       <p>You have been successfully added to the placement cell.</p>
       <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
+    `;*/
+    const emailContent = `
+      <h3>Welcome to the Placement Cell!</h3>
+      <p>Dear ${newStudent.name},</p>
+      <p>Congratulations on joining our vibrant community of aspiring professionals!</p>
+      <p>We're thrilled to have you on board and can't wait to help you unlock endless opportunities.</p>
+      <p>To get started, please use the following Pass Code to verify your email:</p>
+      <h2 style="text-align: center; color: #ff5f5f; font-weight: bold;">${otp}</h2>
+      <p>Once you've verified your email, you'll gain access to our exclusive interview and job portal, designed to elevate your career prospects.</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="${joiningLink}" style="background-color: #ff5f5f; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Portal Now</a>
+      </div>
+      <p>Use the above link  to access the portal always and without pass code it wont open so always remember it.</p>
+      <p>Always remember, we're here to support you every step of the way!</p>
+      <p>Discover a world of opportunities, connect with industry professionals, and showcase your skills to top employers.</p>
+      <p>We're here to support you every step of the way, providing valuable resources, interview preparation tips, and personalized guidance.</p>
+      <p>Get ready to unlock your true potential and embark on an exciting career journey!</p>
+
+      <p>Best regards,</p>
+      <p>The Placement Cell Team</p>
     `;
+
 
     sendEmail(newStudent.email, emailSubject, emailContent);
 
