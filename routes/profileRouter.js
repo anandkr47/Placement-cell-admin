@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path'); // Add the path module
 const profileController = require('../controllers/profile_controller');
 const { title } = require('process');
+const Profile = require('../models/profile');
 
 // Configure Multer storage
 const storage = multer.diskStorage({
@@ -37,7 +38,7 @@ router.get('/edit_profile/:id', (req, res) => {
   // For example:
   const profileId = req.params.id;
 
-  Job.findById(profileId)
+  Profile.findById(profileId)
     .then((profile) => {
       res.render("edit_profile", { title:"edit profile",profile });
     })
