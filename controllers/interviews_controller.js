@@ -1,5 +1,6 @@
 const Interview = require("../models/interview");
 const Student = require("../models/student");
+const { sendEmail } = require('./email');
 
 // Renders the addInterview page
 module.exports.addInterview = (req, res) => {
@@ -89,6 +90,42 @@ module.exports.enrollInInterview = async (req, res) => {
         await student.updateOne({
           $push: { interviews: assignedInterview },
         });
+
+        const interviewLink = `https://myplacement-cell.onrender.com/student_interview/${student.email}`;
+
+
+        const emailSubject = 'Interview Joining Link';
+       /* const emailContent = `
+          <h3>Placement Cell Joining Link</h3>
+          <p>Dear ${newStudent.name},</p>
+          <p>Please use the following Pass Code to verify your email:</p>
+          <p><strong>${otp}</strong></p>
+          <p>You have been successfully added to the placement cell.</p>
+          <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
+        `;*/
+        const emailContent = `
+          <h3>Welcome to the Placement Cell!</h3>
+          <p>Dear ${student.name},</p>
+          <p>Congratulations on joining our vibrant community of aspiring professionals!</p>
+          <p>We're pleased to inform you that you are enrolled in the mock interview of' ${interview.company}</p>
+          
+          <p>Interview Date: ${interview.date}</p>
+          <p>Interview Time: ${interview.time}</p>
+          <div style="text-align: center; margin-top: 20px;">
+            <a href="${interviewLink}" style="background-color: #ff5f5f; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Portal Now</a>
+          </div>
+          
+          <p>Discover a world of opportunities, connect with industry professionals, and showcase your skills to top employers.</p>
+          <p>We're here to support you every step of the way, providing valuable resources, interview preparation tips, and personalized guidance.</p>
+          <p>Get ready to unlock your true potential and embark on an exciting career journey!</p>
+    
+          <p>Best regards,</p>
+          <p>The Placement Cell Team</p>
+        `;
+    
+    
+        sendEmail(student.email, emailSubject, emailContent);
+    
 
         req.flash(
           "success",
