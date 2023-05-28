@@ -23,10 +23,7 @@ exports.createProfile = async (req, res) => {
       linkedin,
       hackerrank,
       leetcode,
-      resume: {
-        data: req.file.path,
-        contentType: req.file.mimetype,
-      },
+      resume,
     });
 
     // Save the profile to the database
@@ -73,7 +70,7 @@ exports.editProfile = async (req, res) => {
     const updatedProfile = await profile.save();
    req.flash("success", "profile added successfully!");
     return res.redirect("back");
-    
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while editing the profile.' });

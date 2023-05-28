@@ -31,8 +31,8 @@ const profileSchema = new mongoose.Schema({
     required: true,
   },
   resume: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    required: true,
   },
   
 });
