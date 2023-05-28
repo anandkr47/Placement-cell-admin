@@ -133,30 +133,29 @@
           </div>
         </div>
       </section>
-      
-  <% } else { %>
-    <section class="profile-section">
-      <div class="container">
-        <div class="text-center">
-          <h2>Your Profile</h2>
-          <div class="profile-details">
-            <p><strong>Name:</strong> <%= student.name %></p>
-            <p><strong>Email:</strong> <%= student.email %></p>
-            <p><strong>College:</strong> <%= student.college %></p>
-            <hr>
-            <p><strong>About:</strong> <%= profile.about %></p>
-            <p><strong>Mobile Number:</strong> <%= profile.mobile %></p>
-            <p><strong>GitHub URL:</strong> <a href="<%= profile.github %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
-            <p><strong>LinkedIn URL:</strong> <a href="<%= profile.linkedin %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
-            <p><strong>HackerRank Profile:</strong> <a href="<%= profile.hackerrank %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
-            <p><strong>LeetCode Profile:</strong> <a href="<%= profile.leetcode %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
-            <hr>
-            <p><strong>Resume:</strong> <a href="<%= profile.resume.data %>" target="_blank" rel="noopener noreferrer">View Resume</a></p>
+      <% } else { %>
+        <section class="profile-section">
+          <div class="container">
+            <div class="text-center">
+              <h2>Your Profile</h2>
+              <div class="profile-details">
+                <p><strong>Name:</strong> <%= student.name %></p>
+                <p><strong>Email:</strong> <%= student.email %></p>
+                <p><strong>College:</strong> <%= student.college %></p>
+                <hr>
+                <p><strong>About:</strong> <%= profile.about %></p>
+                <p><strong>Mobile Number:</strong> <%= profile.mobile %></p>
+                <p><strong>GitHub URL:</strong> <a href="<%= profile.github %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+                <p><strong>LinkedIn URL:</strong> <a href="<%= profile.linkedin %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+                <p><strong>HackerRank Profile:</strong> <a href="<%= profile.hackerrank %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+                <p><strong>LeetCode Profile:</strong> <a href="<%= profile.leetcode %>" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+                <hr>
+                <p><strong>Resume:</strong> <a href="<%= profile.resume.data %>" target="_blank" rel="noopener noreferrer">View Resume</a></p>
+              </div>
+              <a href="/edit_profile/<%= profile._id %>" class="btn btn-secondary">Edit Profile</a>
+            </div>
           </div>
-          <a href="/edit_profile<%=profile._id%>" class="btn btn-secondary">Edit Profile</a>
-        </div>
-      </div>
-    </section>
-    
-  <% } %>
+        </section>
+      <% } %>
+      
 </main>

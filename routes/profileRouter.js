@@ -39,7 +39,7 @@ router.get('/edit_profile/:id', (req, res) => {
 
   Job.findById(profileId)
     .then((profile) => {
-      res.render("edit_profile", { title:"edit profile", profile });
+      res.render("edit_profile", { title:"edit profile",profile });
     })
     .catch((err) => {
       console.error("Error retrieving profile", err);
