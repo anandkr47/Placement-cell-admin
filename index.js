@@ -231,7 +231,8 @@ app.get('/student_profile/:email', async (req, res) => {
     const { email } = req.params;
 
     // Assuming you have a Student model/schema defined
-    const profile = await Student.findOne({ email });
+    const student=await Student.findOne({ email });
+    const profile = await Profile.findOne({ email });
 
     if (!profile) {
       // Handle the case where the student is not found
