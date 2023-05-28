@@ -27,11 +27,13 @@ router.post('/create_profile', upload.single('resume'), profileController.create
 // Edit an existing profile
 router.post('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
 
-// Serve uploaded files
 router.get('/student_profile/uploads/:id', (req, res) => {
   const fileId = req.params.id;
 
-  Profile.findById(fileId)
+  // Convert the fileId to ObjectId
+  const profileId = mongoose.Types.ObjectId(fileId);
+
+  Profile.findById(profileId)
     .then((profile) => {
       if (!profile) {
         // Profile not found
@@ -53,6 +55,7 @@ router.get('/student_profile/uploads/:id', (req, res) => {
       res.status(500).send('Failed to retrieve the file');
     });
 });
+
 
 router.get('/edit_profile/:id', (req, res) => {
   // Add your logic here to render the edit profile page
