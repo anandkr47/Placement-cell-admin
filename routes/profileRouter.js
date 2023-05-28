@@ -32,10 +32,10 @@ router.get('/uploads/:filename', (req, res) => {
   const filePath = path.join(__dirname, '../uploads/', filename);
   res.sendFile(filePath);
 });
-router.get('/edit_profile', (req, res) => {
+router.get('/edit_profile/:id', (req, res) => {
   // Add your logic here to render the edit profile page
   // For example:
-  res.render('edit_profile',{title:"edit profile"}); // Replace 'edit_profile' with your actual view file name
+  res.render('edit_profile.js',{title:"edit profile"}); // Replace 'edit_profile' with your actual view file name
 });
 
 module.exports = router;
