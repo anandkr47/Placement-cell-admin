@@ -7,7 +7,7 @@ const multer = require('multer');
 // Create a new profile
 exports.createProfile = async (req, res) => {
   try {
-    const { email,about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
+    const { email,about, mobile, github, linkedin, hackerrank, leetcode,resume } = req.body;
 
     // Check if resume file is uploaded
     if (!req.file) {
@@ -42,7 +42,7 @@ exports.createProfile = async (req, res) => {
 // Edit an existing profile
 exports.editProfile = async (req, res) => {
   try {
-    const {about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
+    const {about, mobile, github, linkedin, hackerrank, leetcode,resume } = req.body;
     const profileId = req.params.id;
     
     // Find the profile by ID
@@ -56,15 +56,9 @@ exports.editProfile = async (req, res) => {
     profile.linkedin = linkedin;
     profile.hackerrank = hackerrank;
     profile.leetcode = leetcode;
-
+    profile.resume = resume;
     // Check if resume file is uploaded
-    if (req.file) {
-      // Update the resume in the profile
-      profile.resume = {
-        data: req.file.path,
-        contentType: req.file.mimetype,
-      };
-    }
+    
 
     // Save the updated profile to the database
     const updatedProfile = await profile.save();

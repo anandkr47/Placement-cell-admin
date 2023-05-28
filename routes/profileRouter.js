@@ -8,7 +8,7 @@ const { title } = require('process');
 const Profile = require('../models/profile');
 
 // Configure Multer storage
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Set the destination directory for uploaded files
     cb(null, 'uploads/');
@@ -20,13 +20,13 @@ const storage = multer.diskStorage({
 });
 
 // Create the Multer upload middleware
-const upload = multer({ storage });
+const upload = multer({ storage });*/
 
 // Create a new profile
-router.post('/create_profile', upload.single('resume'), profileController.createProfile);
+router.post('/create_profile', profileController.createProfile);
 
 // Edit an existing profile
-router.post('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
+router.post('/edit_profile/:id', profileController.editProfile);
 
 /*
 router.get('/student_profile/uploads/:id', (req, res) => {
