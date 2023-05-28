@@ -24,7 +24,7 @@ const upload = multer({ storage });
 router.post('/create_profile', upload.single('resume'), profileController.createProfile);
 
 // Edit an existing profile
-router.put('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
+router.post('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
 
 // Serve uploaded files
 router.get('/uploads/:filename', (req, res) => {
