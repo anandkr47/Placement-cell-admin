@@ -35,7 +35,19 @@ router.get('/uploads/:filename', (req, res) => {
 router.get('/edit_profile/:id', (req, res) => {
   // Add your logic here to render the edit profile page
   // For example:
-  res.render('edit_profile.js',{title:"edit profile"}); // Replace 'edit_profile' with your actual view file name
+  const profileId = req.params.id;
+
+  Job.findById(profileId)
+    .then((profile) => {
+      res.render("edit_profile", { title:"edit profile", profile });
+    })
+    .catch((err) => {
+      console.error("Error retrieving profile", err);
+      req.flash("error", "Failed to retrieve the file");
+      res.redirect("/");
+    });
+
+  // Replace 'edit_profile' with your actual view file name
 });
 
 module.exports = router;
