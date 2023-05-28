@@ -28,10 +28,30 @@ router.post('/create_profile', upload.single('resume'), profileController.create
 router.post('/edit_profile/:id', upload.single('resume'), profileController.editProfile);
 
 // Serve uploaded files
-router.get('/student_profile/uploads/:filename', (req, res) => {
-  const { filename } = req.params;
-  const filePath = path.join(__dirname,'uploads', filename);
-res.sendFile(filePath);
+router.get('/student_profile/uploads/:id', (req, res) => {
+  const fileId = req.params.id;
+
+  Profile.findById(fileId)
+    .then((profile) => {
+      if (!profile) {
+        // Profile not found
+        return res.status(404).send('Profile not found');
+      }
+
+      // Assuming you have a field named 'resume' in your Profile model
+      const fileData = profile.resume.data;
+      const fileName = profile.resume.fileName;
+      const fileType = profile.resume.fileType;
+
+      res.setHeader('Content-Type', fileType);
+      res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+
+      res.send(fileData);
+    })
+    .catch((err) => {
+      console.error('Error retrieving profile', err);
+      res.status(500).send('Failed to retrieve the file');
+    });
 });
 
 router.get('/edit_profile/:id', (req, res) => {
