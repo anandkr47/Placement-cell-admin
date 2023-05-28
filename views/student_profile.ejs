@@ -44,8 +44,9 @@
           <div class="text-center">
             <h2>Create Your Profile</h2>
             <p>Complete your profile to enhance your placement opportunities.</p>
-            <input type="hidden" name="email" value="<%= student.email %>">
+            
             <form action="/create_profile" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="email" value="<%= student.email %>">
               <div class="form-group">
                 <label for="about">About:</label>
                 <textarea class="form-control" id="about" name="about" rows="4" required></textarea>
