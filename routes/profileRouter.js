@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path'); // Add the path module
 const profileController = require('../controllers/profile_controller');
+const { title } = require('process');
 
 // Configure Multer storage
 const storage = multer.diskStorage({
@@ -30,6 +31,11 @@ router.get('/uploads/:filename', (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(__dirname, '../uploads/', filename);
   res.sendFile(filePath);
+});
+router.get('/edit_profile', (req, res) => {
+  // Add your logic here to render the edit profile page
+  // For example:
+  res.render('edit_profile',{title:"edit profile"}); // Replace 'edit_profile' with your actual view file name
 });
 
 module.exports = router;

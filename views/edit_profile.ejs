@@ -1,0 +1,39 @@
+<section class="profile-section">
+    <div class="container">
+      <div class="text-center">
+        <h2>Edit Profile</h2>
+        <form action="/edit_profile" method="POST" enctype="multipart/form-data">
+            
+          <div class="form-group">
+            <label for="about">About</label>
+            <textarea id="about" name="about" required><%= profile.about %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" value="<%= profile.mobile %>" required>
+          </div>
+          <div class="form-group">
+            <label for="github">GitHub URL</label>
+            <input type="url" id="github" name="github" value="<%= profile.github %>" required>
+          </div>
+          <div class="form-group">
+            <label for="linkedin">LinkedIn URL</label>
+            <input type="url" id="linkedin" name="linkedin" value="<%= profile.linkedin %>" required>
+          </div>
+          <div class="form-group">
+            <label for="hackerrank">HackerRank Profile</label>
+            <input type="url" id="hackerrank" name="hackerrank" value="<%= profile.hackerrank %>" required>
+          </div>
+          <div class="form-group">
+            <label for="leetcode">LeetCode Profile</label>
+            <input type="url" id="leetcode" name="leetcode" value="<%= profile.leetcode %>" required>
+          </div>
+          <div class="form-group">
+            <label for="resume">Resume</label>
+            <input type="file" id="resume" name="resume">
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </section>

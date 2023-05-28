@@ -45,14 +45,14 @@ exports.createProfile = async (req, res) => {
 // Edit an existing profile
 exports.editProfile = async (req, res) => {
   try {
-    const { email,about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
+    const {about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
     const profileId = req.params.id;
     
     // Find the profile by ID
     const profile = await Profile.findById(profileId);
 
     // Update the profile fields
-    profile.email = email;
+   // profile.email = email;
     profile.about = about;
     profile.mobile = mobile;
     profile.github = github;
