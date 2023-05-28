@@ -11,7 +11,7 @@ const expressLayouts = require("express-ejs-layouts");
 const fetch = require('cross-fetch');
 const Student = require("./models/student");
 const Job = require("./models/job");
-const profile = require("./models/profile");
+const Profile = require("./models/profile");
 const { authenticator } = require('otplib');
 const emailRoutes = require('./routes/emailRoutes');
 const taskemailRoutes = require('./routes/taskemailRoutes');
@@ -231,9 +231,9 @@ app.get('/student_profile/:email', async (req, res) => {
     const { email } = req.params;
 
     // Assuming you have a Student model/schema defined
-    const student = await Student.findOne({ email });
+    const profile = await Student.findOne({ email });
 
-    if (!student) {
+    if (!profile) {
       // Handle the case where the student is not found
       return res.status(404).send('Student not found.');
     }

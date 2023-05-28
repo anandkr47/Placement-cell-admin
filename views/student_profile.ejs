@@ -38,7 +38,7 @@
 </header>
 
 <main>
-  <% if (student.profile.length = 0) { %>
+  <% if (!profile) { %>
     <section class="profile-section">
         <div class="container">
           <div class="text-center">
@@ -97,13 +97,13 @@
             <p>Name: <%= student.name %></p>
             <p>Email: <%= student.email %></p>
             <p>College: <%= student.college %></p>
-            <p>About:<%=student.profile.about %></p>
-            <p>Mobile Number: <%=student.profile.mobile %></p>
-            <p>GitHub URL: <%=student.profile.github %></p>
-            <p>LinkedIn URL: <%=student.profile.linkedin %></p>
-            <p>HackerRank Profile: <%=student.profile.hackerrank %></p>
-            <p>LeetCode Profile: <%=student.profile.leetcode %></p>
-            <p>Resume: <%=student.profile.resume %></p>
+            <p>About:<%=profile.about %></p>
+            <p>Mobile Number: <%=profile.mobile %></p>
+            <p>GitHub URL: <%=profile.github %></p>
+            <p>LinkedIn URL: <%=profile.linkedin %></p>
+            <p>HackerRank Profile: <%=profile.hackerrank %></p>
+            <p>LeetCode Profile: <%=profile.leetcode %></p>
+            <p>Resume: <%=profile.resume %></p>
 
             <!-- Add more profile details as needed -->
           </div>

@@ -1,4 +1,5 @@
 const Profile = require('../models/profile');
+const Student = require('../models/student');
 const multer = require('multer');
 
 // Create a multer storage instance
@@ -15,7 +16,7 @@ exports.createProfile = async (req, res) => {
 
     // Create a new profile document
     const newProfile = new Profile({
-      students: [],
+      email: req.params.email,
       about,
       mobile,
       github,
@@ -43,11 +44,12 @@ exports.editProfile = async (req, res) => {
   try {
     const { about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
     const profileId = req.params.id;
-
+    const email = req.params.email;
     // Find the profile by ID
     const profile = await Profile.findById(profileId);
 
     // Update the profile fields
+    profile.email = email;
     profile.about = about;
     profile.mobile = mobile;
     profile.github = github;

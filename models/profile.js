@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const profileSchema = new mongoose.Schema({
+  
+  email: {
+    type: String,
+    required: true,
+  },
   about: {
     type: String,
     required: true,
@@ -29,15 +34,7 @@ const profileSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  students: [
-    {
-      student: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Student",
-      },
-      
-    },
-  ],
+  
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
