@@ -234,7 +234,7 @@ app.get('/student_profile/:email', async (req, res) => {
     const student=await Student.findOne({ email });
     const profile = await Profile.findOne({ email });
 
-    if (!profile) {
+    if (!student) {
       // Handle the case where the student is not found
       return res.status(404).send('Student not found.');
     }
