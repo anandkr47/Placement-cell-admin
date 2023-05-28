@@ -31,6 +31,8 @@ exports.createProfile = async (req, res) => {
 
     // Save the profile to the database
     const savedProfile = await newProfile.save();
+    req.flash("success", "profile added successfully!");
+        return res.redirect("back");
 
     res.status(201).json(savedProfile);
   } catch (error) {
