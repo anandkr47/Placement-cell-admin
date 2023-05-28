@@ -1,32 +1,13 @@
 const Profile = require('../models/profile');
 const Student = require('../models/student');
-const multer = require('multer');
+// const multer = require('multer');
 
 // Create a multer storage instance
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Set the destination directory for uploaded files
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    // Set the filename for uploaded files
-    cb(null, Date.now() + '-' + file.originalname);
-  },
-});
-
-// Create the Multer upload middleware
-const upload = multer({ storage });
 
 // Create a new profile
-// Create a new profile
-exports.createProfile = upload.single('resume'), async (req, res) => {
+exports.createProfile = async (req, res) => {
   try {
-    const { email, about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
-
-    // Check if resume file is uploaded
-    if (!req.file) {
-      return res.status(400).json({ error: 'No resume file uploaded' });
-    }
+    const { email, about, mobile, github, linkedin, hackerrank, leetcode, resume } = req.body;
 
     // Create a new profile document
     const newProfile = new Profile({
@@ -37,16 +18,13 @@ exports.createProfile = upload.single('resume'), async (req, res) => {
       linkedin,
       hackerrank,
       leetcode,
-      resume: {
-        data: req.file.buffer,
-        fileName: req.file.filename,
-        fileType: req.file.mimetype,
-      },
+      resume,
     });
 
     // Save the profile to the database
     const savedProfile = await newProfile.save();
-    res.status(201).json(savedProfile);
+    req.flash("success", "Profile added successfully!");
+    return res.redirect("back");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while creating the profile.' });
@@ -54,9 +32,9 @@ exports.createProfile = upload.single('resume'), async (req, res) => {
 };
 
 // Edit an existing profile
-exports.editProfile = upload.single('resume'), async (req, res) => {
+exports.editProfile = async (req, res) => {
   try {
-    const { about, mobile, github, linkedin, hackerrank, leetcode } = req.body;
+    const { about, mobile, github, linkedin, hackerrank, leetcode, resume } = req.body;
     const profileId = req.params.id;
 
     // Find the profile by ID
@@ -69,18 +47,12 @@ exports.editProfile = upload.single('resume'), async (req, res) => {
     profile.linkedin = linkedin;
     profile.hackerrank = hackerrank;
     profile.leetcode = leetcode;
-
-    if (req.file) {
-      profile.resume = {
-        data: req.file.buffer,
-        fileName: req.file.filename,
-        fileType: req.file.mimetype,
-      };
-    }
+    profile.resume = resume;
 
     // Save the updated profile to the database
     const updatedProfile = await profile.save();
-    res.status(200).json(updatedProfile);
+    req.flash("success", "Profile updated successfully!");
+    return res.redirect("back");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while editing the profile.' });
