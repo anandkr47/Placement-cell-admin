@@ -252,7 +252,7 @@ app.get('/student_profile/:email', async (req, res) => {
 });
 // Add a new route to handle resume file retrieval
 
-app.get('/resumes/:filename', async (req, res) => {
+app.get('/student_profile/uploads/:filename', async (req, res) => {
   try {
     const filename = req.params.filename;
 
