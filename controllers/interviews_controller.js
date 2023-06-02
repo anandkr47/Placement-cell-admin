@@ -85,7 +85,6 @@ module.exports.updateInterview = async (req, res) => {
   }
 };
 
-// Delete Interview
 module.exports.deleteInterview = async (req, res) => {
   try {
     const interviewId = req.params.id;
@@ -98,11 +97,11 @@ module.exports.deleteInterview = async (req, res) => {
     }
 
     // Deallocate the student from the interview
-    const studentId = interview.student;
+    const studentId = interview.students;
     if (studentId) {
       await Student.findOneAndUpdate(
         { _id: studentId },
-        { $pull: { interviews: interviewId } }
+        { $pull: { interviews: { company: interview.company } } }
       );
     }
 
