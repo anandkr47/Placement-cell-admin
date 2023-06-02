@@ -89,8 +89,15 @@ module.exports.updateInterview = async (req, res) => {
 module.exports.deleteInterview = async (req, res) => {
   try {
     const interviewId = req.params.id;
+    const studentId = req.params;
 
     const interview = await Interview.findByIdAndDelete(interviewId);
+    if (student) {
+    await Student.findOneAndUpdate(
+      { _id: studentId },
+      { $pull: { interviews: { company: interview.company } } }
+    );
+    }
 
     if (!interview) {
       req.flash("error", "Interview not found!");
