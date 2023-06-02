@@ -98,7 +98,7 @@ module.exports.deleteInterview = async (req, res) => {
     }
 
     req.flash("success", "Interview deleted successfully!");
-    return res.redirect("/interviews");
+    return res.redirect("/");
   } catch (err) {
     console.log(err);
     req.flash("error", "Error in deleting the interview!");
