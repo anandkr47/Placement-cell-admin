@@ -20,7 +20,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   requirements: {
-    type: Number,
+    type: String,
     required: true,
   },
   contact: {
