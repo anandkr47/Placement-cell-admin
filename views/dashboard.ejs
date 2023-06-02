@@ -163,6 +163,13 @@
                   <td><%= interview.date %></td>
                 </tr>
               </tbody>
+              <a href="/interview/edit/<%= interview._id %>" class="btn btn-primary ms-2">
+                Edit
+              </a>
+              <a href="/interview/delete/<%= interview._id %>"
+                class="btn btn-danger ms-2">
+               Delete
+             </a>
             </table>
 
             <div
