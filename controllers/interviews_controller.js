@@ -14,7 +14,6 @@ module.exports.addInterview = (req, res) => {
 };
 
 // Creation of a new interview
-// Creation of a new interview
 module.exports.create = async (req, res) => {
   try {
     const { company, date, time, link } = req.body;
@@ -41,6 +40,71 @@ module.exports.create = async (req, res) => {
   }
 };
 
+// Edit Interview
+module.exports.editInterview = async (req, res) => {
+  try {
+    const interviewId = req.params.interviewId;
+    const interview = await Interview.findById(interviewId);
+
+    if (!interview) {
+      req.flash("error", "Interview not found!");
+      return res.redirect("back");
+    }
+
+    res.render("edit_interview", { interview });
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Error in editing the interview!");
+    return res.redirect("back");
+  }
+};
+
+// Update Interview
+module.exports.updateInterview = async (req, res) => {
+  try {
+    const interviewId = req.params.interviewId;
+    const { company, date, time, link } = req.body;
+
+    const interview = await Interview.findByIdAndUpdate(
+      interviewId,
+      { company, date, time, link },
+      { new: true }
+    );
+
+    if (!interview) {
+      req.flash("error", "Interview not found!");
+      return res.redirect("back");
+    }
+
+    req.flash("success", "Interview updated successfully!");
+    return res.redirect("/");
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Error in updating the interview!");
+    return res.redirect("back");
+  }
+};
+
+// Delete Interview
+module.exports.deleteInterview = async (req, res) => {
+  try {
+    const interviewId = req.params.interviewId;
+
+    const interview = await Interview.findByIdAndDelete(interviewId);
+
+    if (!interview) {
+      req.flash("error", "Interview not found!");
+      return res.redirect("back");
+    }
+
+    req.flash("success", "Interview deleted successfully!");
+    return res.redirect("/interviews");
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Error in deleting the interview!");
+    return res.redirect("back");
+  }
+};
 
 // Enrolling a student in the interview
 module.exports.enrollInInterview = async (req, res) => {
@@ -93,42 +157,26 @@ module.exports.enrollInInterview = async (req, res) => {
 
         const interviewLink = `https://myplacement-cell.onrender.com/student_interview/${student.email}`;
 
-
         const emailSubject = 'Interview Joining Link';
-       /* const emailContent = `
-          <h3>Placement Cell Joining Link</h3>
-          <p>Dear ${newStudent.name},</p>
-          <p>Please use the following Pass Code to verify your email:</p>
-          <p><strong>${otp}</strong></p>
-          <p>You have been successfully added to the placement cell.</p>
-          <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
-        `;*/
         const emailContent = `
-        <h3>Congratulation!</h3>
-        <p>Dear ${student.name},</p>
-        
-        <p>We're thrilled to inform you that you have been selected for an exclusive mock interview opportunity with <strong>${interview.company}</strong>.</p>
-        
-        <p><strong>Interview Date: ${interview.date}</strong></p>
-        <p><strong>Interview Time: ${interview.time}</strong></p>
-        <p><strong>Be on time </strong></p>
-        <div style="text-align: center; margin-top: 20px;">
-          <a href="${interviewLink}" style="background-color: #ff5f5f; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Interview Portal Now</a>
-        </div>
-        
-        <p>Prepare to showcase your skills and seize this golden chance to impress top employers!</p>
-        <p>Unlock a world of opportunities, connect with industry experts, and ignite your career growth.</p>
-        <p>We'll be by your side, providing valuable resources, personalized guidance, and interview preparation tips.</p>
-        <p>Get ready to unleash your potential and embark on an exhilarating journey towards success!</p>
-        
-        <p>Best regards,</p>
-        <p>The Placement Cell Team</p>
-        
+          <h3>Congratulation!</h3>
+          <p>Dear ${student.name},</p>
+          <p>We're thrilled to inform you that you have been selected for an exclusive mock interview opportunity with <strong>${interview.company}</strong>.</p>
+          <p><strong>Interview Date: ${interview.date}</strong></p>
+          <p><strong>Interview Time: ${interview.time}</strong></p>
+          <p><strong>Be on time </strong></p>
+          <div style="text-align: center; margin-top: 20px;">
+            <a href="${interviewLink}" style="background-color: #ff5f5f; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold;">Access the Interview Portal Now</a>
+          </div>
+          <p>Prepare to showcase your skills and seize this golden chance to impress top employers!</p>
+          <p>Unlock a world of opportunities, connect with industry experts, and ignite your career growth.</p>
+          <p>We'll be by your side, providing valuable resources, personalized guidance, and interview preparation tips.</p>
+          <p>Get ready to unleash your potential and embark on an exhilarating journey towards success!</p>
+          <p>Best regards,</p>
+          <p>The Placement Cell Team</p>
         `;
-    
-    
+
         sendEmail(student.email, emailSubject, emailContent);
-    
 
         req.flash(
           "success",
@@ -145,6 +193,7 @@ module.exports.enrollInInterview = async (req, res) => {
     return res.redirect("back");
   } catch (err) {
     req.flash("error", "Error in enrolling for the interview!");
+    return res.redirect("back");
   }
 };
 
@@ -180,5 +229,6 @@ module.exports.deallocate = async (req, res) => {
     return res.redirect("back");
   } catch (err) {
     req.flash("error", "Couldn't deallocate from the interview!");
+    return res.redirect("back");
   }
 };
