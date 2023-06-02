@@ -48,14 +48,14 @@ module.exports.editInterview = async (req, res) => {
 
     if (!interview) {
       req.flash("error", "Interview not found!");
-      return res.redirect("back");
+      return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
     }
 
-    res.render("edit_interview", {title: 'edit interview', interview });
+    res.render("edit_interview", { title: 'Edit Interview', interview });
   } catch (err) {
     console.log(err);
     req.flash("error", "Error in editing the interview!");
-    return res.redirect("back");
+    return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
   }
 };
 
@@ -73,15 +73,15 @@ module.exports.updateInterview = async (req, res) => {
 
     if (!interview) {
       req.flash("error", "Interview not found!");
-      return res.redirect("back");
+      return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
     }
 
     req.flash("success", "Interview updated successfully!");
-    return res.redirect("/");
+    return res.redirect("/"); // Redirect to the desired route after updating the interview
   } catch (err) {
     console.log(err);
     req.flash("error", "Error in updating the interview!");
-    return res.redirect("back");
+    return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
   }
 };
 
@@ -94,15 +94,15 @@ module.exports.deleteInterview = async (req, res) => {
 
     if (!interview) {
       req.flash("error", "Interview not found!");
-      return res.redirect("back");
+      return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
     }
 
     req.flash("success", "Interview deleted successfully!");
-    return res.redirect("/");
+    return res.redirect("/"); // Redirect to the desired route after deleting the interview
   } catch (err) {
     console.log(err);
     req.flash("error", "Error in deleting the interview!");
-    return res.redirect("back");
+    return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
   }
 };
 
