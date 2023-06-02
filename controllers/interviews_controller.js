@@ -97,7 +97,8 @@ module.exports.deleteInterview = async (req, res) => {
     }
 
     // Deallocate the student from the interview
-    const studentId = interview.students;
+    const studentId = interview.students._id;
+    console.log(studentId);
     if (studentId) {
       await Student.findOneAndUpdate(
         { _id: studentId },
