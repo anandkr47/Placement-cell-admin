@@ -1,26 +1,25 @@
 <% if (locals.user) { %>
     <div class="container">
-        <h1>Edit Interview</h1>
-        <form action="/interview/edit/<%= interview._id %>" method="POST">
-          <div class="mb-3">
-            <label for="company" class="form-label">Company</label>
-            <input type="text" class="form-control" id="company" name="company" value="<%= interview.company %>" required>
-          </div>
-          <div class="mb-3">
-            <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="<%= interview.date %>" required>
-          </div>
-          <div class="mb-3">
-            <label for="time" class="form-label">Time</label>
-            <input type="time" class="form-control" id="time" name="time" value="<%= interview.time %>" required>
-          </div>
-          <div class="mb-3">
-            <label for="link" class="form-label">Link</label>
-            <input type="text" class="form-control" id="link" name="link" value="<%= interview.link %>" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </form>
-      </div>
-      
+      <h1>Edit Interview</h1>
+      <form action="/update/<%= interview._id %>" method="POST">
+        <div class="mb-3">
+          <label for="company" class="form-label">Company</label>
+          <input type="text" class="form-control" id="company" name="company" value="<%= interview.company %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date" value="<%= interview.date %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">Time</label>
+          <input type="time" class="form-control" id="time" name="time" value="<%= interview.time %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="link" class="form-label">Link</label>
+          <input type="text" class="form-control" id="link" name="link" value="<%= interview.link %>" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
   <% } %>
   
