@@ -43,7 +43,7 @@ module.exports.create = async (req, res) => {
 // Edit Interview
 module.exports.editInterview = async (req, res) => {
   try {
-    const interviewId = req.params.interviewId;
+    const interviewId = req.params.id;
     const interview = await Interview.findById(interviewId);
 
     if (!interview) {
@@ -62,7 +62,7 @@ module.exports.editInterview = async (req, res) => {
 // Update Interview
 module.exports.updateInterview = async (req, res) => {
   try {
-    const interviewId = req.params.interviewId;
+    const interviewId = req.params.id;
     const { company, date, time, link } = req.body;
 
     const interview = await Interview.findByIdAndUpdate(
@@ -88,7 +88,7 @@ module.exports.updateInterview = async (req, res) => {
 // Delete Interview
 module.exports.deleteInterview = async (req, res) => {
   try {
-    const interviewId = req.params.interviewId;
+    const interviewId = req.params.id;
 
     const interview = await Interview.findByIdAndDelete(interviewId);
 
