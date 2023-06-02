@@ -3,7 +3,7 @@
 This placement cell web application is created for users/employees to manage interviews of students, and allocate students to companies` interviews. \
 It is built using NodeJs, ExpressJs, MongoDB, EJS and JavaScript.
 
-### 🔗 Hosted link: [placement cell](https://placement-cell-fj5h.onrender.com)
+
 
 ![](./public/1.png)
 
@@ -17,14 +17,7 @@ It is built using NodeJs, ExpressJs, MongoDB, EJS and JavaScript.
 - Download the CSV report
 - job portal You can search jobs according to the location and job title
  
-## 🧑‍💻 Getting started
 
-* Fork the project 
-* Clone the forked repository in your local system
-* Create .env file in the root directory and add the following:-
-  * PORT="Your port number"
-  * MONGODB_URL="Your MongoDB URL"
-  * SESSION_SECRET_KEY="Your secret session key"
 * Install all required packages
 ```bash
 npm install 
@@ -33,7 +26,7 @@ npm install
 ```bash
 npm start
 ```
-The project is running on the port number provided by you.
+
 
 ## 🛠️ Tools Used 
 - NodeJS
