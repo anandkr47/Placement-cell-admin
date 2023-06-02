@@ -9,7 +9,7 @@ router.post("/create", interviewController.create);
 
 router.get("/edit/:id", interviewController.editInterview);
 
-router.post("/update/:id", interviewController.updateInterview);
+router.post("/update/:id", interviewController.updateInterview);// Path: routes\interviews.js
 
 router.get("/delete/:id", interviewController.deleteInterview);
 

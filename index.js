@@ -18,6 +18,7 @@ const taskemailRoutes = require('./routes/taskemailRoutes');
 const dsataskRoutes=require('./routes/dsataskRoutes');
 const job=require('./routes/job');
 const profileRouter=require('./routes/profileRouter');
+const interviewRoutes = require("./routes/interviews");
 // used for session cookie
 const session = require("express-session");
 const passport = require("passport");
@@ -77,6 +78,7 @@ app.use('/',taskemailRoutes);
 app.use('/',dsataskRoutes);
 app.use('/',job);
 app.use('/',profileRouter);
+app.use("/", interviewRoutes);
 
 
 app.get('/student_dashboard/:email', async (req, res) => {
