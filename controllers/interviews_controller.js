@@ -89,19 +89,21 @@ module.exports.updateInterview = async (req, res) => {
 module.exports.deleteInterview = async (req, res) => {
   try {
     const interviewId = req.params.id;
-    const studentId = req.params;
 
     const interview = await Interview.findByIdAndDelete(interviewId);
-    if (student) {
-    await Student.findOneAndUpdate(
-      { _id: studentId },
-      { $pull: { interviews: { company: interview.company } } }
-    );
-    }
 
     if (!interview) {
       req.flash("error", "Interview not found!");
       return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
+    }
+
+    // Deallocate the student from the interview
+    const studentId = interview.student;
+    if (studentId) {
+      await Student.findOneAndUpdate(
+        { _id: studentId },
+        { $pull: { interviews: interviewId } }
+      );
     }
 
     req.flash("success", "Interview deleted successfully!");
@@ -112,6 +114,7 @@ module.exports.deleteInterview = async (req, res) => {
     return res.redirect("/"); // Redirect to the desired route or handle the error case appropriately
   }
 };
+
 
 // Enrolling a student in the interview
 module.exports.enrollInInterview = async (req, res) => {
