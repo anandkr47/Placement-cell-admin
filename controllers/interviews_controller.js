@@ -51,7 +51,7 @@ module.exports.editInterview = async (req, res) => {
       return res.redirect("back");
     }
 
-    res.render("edit_interview", { interview });
+    res.render("edit_interview", {title: 'edit interview', interview });
   } catch (err) {
     console.log(err);
     req.flash("error", "Error in editing the interview!");
