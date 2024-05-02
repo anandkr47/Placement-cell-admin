@@ -1,45 +1,52 @@
-<section class="profile-section">
-    <div class="container">
-      <div class="text-center">
-        <h2 style="color: aliceblue;">Edit Profile</h2>
-        <form action="/edit_profile/<%= profile._id %>" method="POST" class="bg-light">
-            
-            <div class="form-group">
-                <label for="about">About:</label>
+<section class="profile-section" style=" padding: 50px 0;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4" style="color: #007bff;">Edit Profile</h2>
+            <form action="/edit_profile/<%= profile._id %>" method="POST">
+              <div class="mb-3">
+                <label for="about" class="form-label">About:</label>
                 <textarea class="form-control" id="about" name="about" rows="4" required></textarea>
               </div>
               
-              <div class="form-group">
-                <label for="mobile">Mobile Number:</label>
+              <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile Number:</label>
                 <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
               </div>
               
-              <div class="form-group">
-                <label for="github">GitHub URL:</label>
+              <div class="mb-3">
+                <label for="github" class="form-label">GitHub URL:</label>
                 <input type="url" class="form-control" id="github" name="github" placeholder="Enter your GitHub URL" required>
               </div>
               
-              <div class="form-group">
-                <label for="linkedin">LinkedIn URL:</label>
+              <div class="mb-3">
+                <label for="linkedin" class="form-label">LinkedIn URL:</label>
                 <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn URL" required>
               </div>
               
-              <div class="form-group">
-                <label for="hackerrank">HackerRank Profile:</label>
+              <div class="mb-3">
+                <label for="hackerrank" class="form-label">HackerRank Profile:</label>
                 <input type="url" class="form-control" id="hackerrank" name="hackerrank" placeholder="Enter your HackerRank profile URL" required>
               </div>
               
-              <div class="form-group">
-                <label for="leetcode">LeetCode Profile:</label>
+              <div class="mb-3">
+                <label for="leetcode" class="form-label">LeetCode Profile:</label>
                 <input type="url" class="form-control" id="leetcode" name="leetcode" placeholder="Enter your LeetCode profile URL" required>
               </div>
               
-              <div class="form-group">
-                <label for="resume">Resume URL (Google Drive):</label>
+              <div class="mb-3">
+                <label for="resume" class="form-label">Resume URL (Google Drive):</label>
                 <input type="url" class="form-control" id="resume" name="resume" placeholder="Enter your resume URL from Google Drive" required>
               </div>
-              <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
