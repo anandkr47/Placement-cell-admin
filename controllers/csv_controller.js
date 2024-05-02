@@ -1,59 +1,35 @@
 const Student = require("../models/student");
 const fs = require("fs");
 const path = require("path");
+const { Parser } = require('json2csv');
 
 module.exports.downloadCSVReport = async function (req, res) {
   try {
     const allStudents = await Student.find({});
-    let report =
-      "student Id, Student name,Student college, Student email, Student status, DSA Final Score, WebD Final Score, React Final Score, Interview date, Interview company, Interview result";
-    let studentData1 = "";
+    
+    const fields = [
+      'id', 'name', 'college', 'email', 'placement_status', 
+      'dsa_score', 'webdev_score', 'react_score',
+      { label: 'Interview Date', value: row => (row.interviews.length > 0 ? row.interviews.map(interview => interview.date.toString()).join(', ') : '') },
+      { label: 'Interview Company', value: row => (row.interviews.length > 0 ? row.interviews.map(interview => interview.company).join(', ') : '') },
+      { label: 'Interview Result', value: row => (row.interviews.length > 0 ? row.interviews.map(interview => interview.result).join(', ') : '') }
+    ];
 
-    for (let student of allStudents) {
-      studentData1 =
-        student.id +
-        "," +
-        student.name +
-        "," +
-        student.college +
-        "," +
-        student.email +
-        "," +
-        student.placement_status +
-        "," +
-        student.dsa_score +
-        "," +
-        student.webdev_score +
-        "," +
-        student.react_score;
-      if (student.interviews.length > 0) {
-        for (let interview of student.interviews) {
-          let studentData2 = "";
-          studentData2 +=
-            "," +
-            interview.date.toString() +
-            "," +
-            interview.company +
-            "," +
-            interview.result;
-          report += "\n" + studentData1 + studentData2;
-        }
-      }
-    }
+    const json2csvParser = new Parser({ fields });
+    const csv = json2csvParser.parse(allStudents);
 
-    const csvFile = fs.writeFile(
-      "uploads/studentsReport.csv",
-      report,
-      function (err, data) {
-        if (err) {
-          console.log(err);
-          return res.redirct("back");
-        }
-        req.flash("success", "successfully downloaded CSV report!");
-        return res.download("uploads/studentsReport.csv");
+    const filePath = path.join(__dirname, '..', 'uploads', 'studentsReport.csv');
+    fs.writeFile(filePath, csv, function (err) {
+      if (err) {
+        console.error(err);
+        return res.redirect("back");
       }
-    );
+      req.flash("success", "Successfully downloaded CSV report!");
+      return res.download(filePath);
+    });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    // Handle error response
+    return res.status(500).send("Internal Server Error");
   }
 };

@@ -3,9 +3,6 @@ const Interview = require("../models/interview");
 const { sendEmail } = require('./email');
 const { authenticator } = require('otplib');
 
-
-
-
 // render add student page
 module.exports.addStudent = (req, res) => {
   if (req.isAuthenticated()) {
@@ -71,14 +68,7 @@ module.exports.create = async (req, res) => {
 
 
     const emailSubject = 'Placement Cell Joining Link';
-   /* const emailContent = `
-      <h3>Placement Cell Joining Link</h3>
-      <p>Dear ${newStudent.name},</p>
-      <p>Please use the following Pass Code to verify your email:</p>
-      <p><strong>${otp}</strong></p>
-      <p>You have been successfully added to the placement cell.</p>
-      <p>Click <a href="${joiningLink}">${joiningLink}</a> to access the interview and job portal.</p>
-    `;*/
+   
     const emailContent = `
       <h3>Welcome to the Placement Cell!</h3>
       <p>Dear ${newStudent.name},</p>

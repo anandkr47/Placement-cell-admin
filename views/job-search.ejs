@@ -105,16 +105,16 @@ h1{
     
     <form action="/search" method="GET">
       <div class="form-group">
-        <label for="location">Location:</label>
+        <label for="location" style="color: aliceblue;">Location:</label>
         <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
       </div>
       
       <div class="form-group">
-        <label for="jobName">Job Name:</label>
-        <input type="text" class="form-control" id="jobName" name="jobName" placeholder="Enter job name" required>
+        <label for="jobName" style="color: aliceblue;">Job Title:</label>
+        <input type="text" class="form-control" id="jobName" name="jobName" placeholder="Enter job title" required>
       </div>
       
-      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 5px;">🔍 Search</button>
     </form>
     
     <% if (jobs && jobs.length > 0) { %>

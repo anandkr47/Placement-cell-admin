@@ -1,7 +1,7 @@
 <% if (locals.user) { %>
     <div class="container">
-      <h1>Edit Interview</h1>
-      <form action="/interview/update/<%= interview._id %>" method="POST">
+      <h1 style="color: aliceblue;">Edit Interview</h1>
+      <form action="/interview/update/<%= interview._id %>" method="POST" class="bg-light">
         <div class="mb-3">
           <label for="company" class="form-label">Company</label>
           <input type="text" class="form-control" id="company" name="company" value="<%= interview.company %>" required>

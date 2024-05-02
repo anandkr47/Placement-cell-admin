@@ -1,8 +1,8 @@
 <% if (locals.user) { %>
   <div class="container mt-4 col-md-4">
-    <h4>Add an interview</h4>
+    <h4 style="color: aliceblue;">Add an interview</h4>
 
-    <form class="row g-3 mt-1 border border-dark rounded p-2" style="--bs-border-opacity: 0.5" action="/interview/create" method="POST">
+    <form class="row g-3 mt-1 border border-dark rounded p-2 bg-light" style="--bs-border-opacity: 0.5" action="/interview/create" method="POST">
 
       <div class="col-12">
         <label for="company" class="form-label">Company</label>
@@ -52,7 +52,7 @@
         />
       </div>
 
-      <div class="col-12">
+      <div class="col-12 "style="align-items-center">
         <button type="submit" class="btn btn-primary">Add interview</button>
       </div>
 
